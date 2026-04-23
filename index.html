@@ -1353,7 +1353,18 @@
   const pages = ['home', 'victor', 'cindy', 'yuka', 'egan', 'david', 'elliot', 'sandeep'];
 
   function route() {
-    const hash = window.location.hash.replace('#/', '') || 'home';
+    const rawHash = window.location.hash;
+
+    // If hash is an in-page anchor (e.g. #methods), scroll to it instead of routing
+    if (rawHash && !rawHash.startsWith('#/')) {
+      const anchor = document.getElementById(rawHash.slice(1));
+      if (anchor) {
+        anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      return;
+    }
+
+    const hash = rawHash.replace('#/', '') || 'home';
     const target = pages.includes(hash) ? hash : 'home';
 
     // show/hide pages
@@ -1367,7 +1378,7 @@
       a.classList.toggle('active', a.dataset.page === target);
     });
 
-    // scroll to top on nav
+    // scroll to top on page switch
     window.scrollTo(0, 0);
 
     // close mobile sidebar
