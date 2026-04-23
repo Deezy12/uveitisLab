@@ -1355,11 +1355,14 @@
   function route() {
     const rawHash = window.location.hash;
 
-    // If hash is an in-page anchor (e.g. #methods), scroll to it instead of routing
+    // If hash is an in-page anchor (e.g. #methods), scroll to it within the active page
     if (rawHash && !rawHash.startsWith('#/')) {
-      const anchor = document.getElementById(rawHash.slice(1));
-      if (anchor) {
-        anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const activePage = document.querySelector('.page.active');
+      if (activePage) {
+        const anchor = activePage.querySelector('#' + CSS.escape(rawHash.slice(1)));
+        if (anchor) {
+          anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }
       return;
     }
