@@ -544,6 +544,202 @@
     border-radius: 3px;
     border: 1px dashed var(--orange);
   }
+
+  /* ── DEMOGRAPHICS TABLE STYLES ── */
+  tbody tr.group-row td {
+    background: var(--navy);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-align: left;
+    padding: 0.5rem 0.7rem;
+  }
+  tbody td.sub { padding-left: 1.5rem; font-weight: 400; color: var(--dark); }
+
+  /* ── CHART GRID (Cindy's results) ── */
+  .chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 640px) { .chart-grid { grid-template-columns: 1fr; } }
+  .chart-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .chart-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.7rem;
+    line-height: 1.3;
+  }
+
+  /* horizontal bar charts */
+  .bar-chart { display: flex; flex-direction: column; gap: 4px; }
+  .bar-row { display: flex; align-items: center; gap: 0.5rem; }
+  .bar-label {
+    width: 38px;
+    text-align: right;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .bar-track {
+    flex: 1;
+    background: #EEF3F8;
+    border-radius: 3px;
+    height: 18px;
+    position: relative;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    color: var(--white);
+    font-size: 0.68rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 6px;
+    min-width: 6px;
+    transition: width 0.4s ease;
+  }
+  .bar-fill.pre { background: #5B8DB8; }
+  .bar-fill.post { background: var(--orange); }
+  .bar-fill.change { background: var(--navy); }
+
+  .bar-legend {
+    display: flex;
+    gap: 0.9rem;
+    justify-content: center;
+    margin-top: 0.6rem;
+    font-size: 0.7rem;
+  }
+  .bar-legend span { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--muted); }
+  .bar-legend span::before {
+    content: '';
+    width: 10px; height: 10px;
+    border-radius: 2px;
+  }
+  .bar-legend .leg-pre::before { background: #5B8DB8; }
+  .bar-legend .leg-post::before { background: var(--orange); }
+
+  /* density fluctuation grouped bars */
+  .density-chart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 0.6rem;
+    height: 160px;
+    padding: 0 0.4rem;
+    border-bottom: 1px solid var(--border);
+    margin-top: 0.5rem;
+  }
+  .d-bar-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    text-align: center;
+  }
+  .d-bar {
+    width: 100%;
+    max-width: 70px;
+    border-radius: 4px 4px 0 0;
+    color: var(--white);
+    font-size: 0.72rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 16px;
+    padding: 2px 0;
+  }
+  .d-bar-label {
+    font-size: 0.68rem;
+    color: var(--dark);
+    font-weight: 600;
+    margin-top: 0.4rem;
+    line-height: 1.25;
+  }
+  .d-bar-n { font-size: 0.65rem; color: var(--muted); margin-top: 0.15rem; }
+
+  /* Bland-Altman SVG holder */
+  .ba-plot {
+    background: #FAFCFE;
+    border-radius: 6px;
+    padding: 0.4rem;
+    border: 1px solid var(--border);
+  }
+  .ba-plot svg { width: 100%; height: auto; display: block; }
+
+  /* Outlier comparison cards */
+  .outlier-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 0.7rem;
+  }
+  @media (max-width: 520px) { .outlier-grid { grid-template-columns: 1fr; } }
+  .outlier-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+  }
+  .o-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: var(--teal);
+    margin-bottom: 0.5rem;
+  }
+  .o-density {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.1rem;
+    line-height: 1;
+  }
+  .o-density.pre { color: var(--protect); }
+  .o-density.post { color: var(--risk); }
+  .o-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    background: #EEF3F8;
+    color: var(--dark);
+    padding: 0.2rem 0.55rem;
+    border-radius: 12px;
+    margin: 0.15rem 0.2rem 0;
+    border: 1px solid var(--border);
+  }
+  .o-tag.warn {
+    background: #FCE8DD;
+    color: var(--risk);
+    border-color: #F0C2A6;
+    font-weight: 600;
+  }
+  .outlier-delta {
+    background: #FFF4E8;
+    border: 1px solid #F0C2A6;
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--dark);
+  }
+  .outlier-delta strong { color: var(--risk); }
 </style>
 </head>
 <body>
@@ -604,8 +800,8 @@
         <a href="#/cindy" class="dir-card" data-nav="cindy">
           <div class="dir-avatar">C</div>
           <div class="dir-role">MD candidate</div>
-          <div class="dir-name">Cindy [Last Name]</div>
-          <div class="dir-focus">[PLACEHOLDER — brief research focus description, 1–2 sentences.]</div>
+          <div class="dir-name">Cindy Chen</div>
+          <div class="dir-focus">Impact of pharmacologic dilation on volumetric AS-OCT quantification of anterior chamber cell density — ARVO 2026 prospective case series of 65 eyes in uveitis patients.</div>
           <div class="dir-arrow">View profile →</div>
         </a>
 
@@ -1053,89 +1249,280 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- PAGE 3: CINDY [PLACEHOLDER]                                   -->
+    <!-- PAGE 3: CINDY CHEN — AS-OCT Dilation Effects                  -->
     <!-- ============================================================ -->
     <div class="page" id="page-cindy">
       <div class="hero">
-        <div class="hero-label">[PLACEHOLDER · Venue / Year]</div>
-        <h1>[PLACEHOLDER — Project or Paper Title]</h1>
-        <div class="hero-question">[PLACEHOLDER — central research question.]</div>
-        <div class="hero-answer"><strong>Central finding:</strong> [PLACEHOLDER — headline result.]</div>
+        <div class="hero-label">ARVO 2026 · Poster #4002–0216</div>
+        <h1>Impact of Pharmacologic Dilation on Volumetric Anterior Segment Optical Coherence Tomography Quantification of Anterior Chamber Cell Density in Uveitis Patients</h1>
+        <div class="hero-question">What is the effect of pharmacologic dilation on clinical and volumetric AS-OCT quantification of anterior chamber inflammation in uveitis?</div>
+        <div class="hero-answer"><strong>Central finding:</strong> Pharmacologic dilation does not significantly alter anterior chamber cell density or clinical SUN grade. However, dilation-induced pigment dispersion can affect AS-OCT hyperreflective particle quantification, particularly in eyes with greater pigment release.</div>
         <div class="authors">
-          <span>Cindy [Last Name], [Degree] · [Co-author 1] · [Co-author 2] · [Senior Author]</span>
-          <span style="margin-top:0.3rem; color: rgba(214,234,244,0.55);">Cole Eye Institute, Cleveland Clinic · Case Western Reserve University</span>
-          <span style="margin-top:0.2rem; color: rgba(214,234,244,0.55);">Contact: <a href="mailto:placeholder@ccf.org" style="color:var(--orange);">placeholder@ccf.org</a></span>
+          <span>Cindy Chen, BA · Eliot N. Haddad, BS · Yuka Mizuno, MD · Victor Bellanda, MD · David Shin, BS · Madina Mahmoud, BS · Allison Winter, BS · Bolisa Savic, RN, BSN · Suraj Bala, BS · Matthew J. Schulgit, BS · Nitesh Mohan, BS · Duriye Sevgi, MD · Kimberly Baynes, MSN, RN · Ashley Lowe, BSN, RN · Sunil K. Srivastava, MD · Sumit Sharma, MD</span>
+          <span style="margin-top:0.3rem;color:rgba(214,234,244,0.55);">Cole Eye Institute, Cleveland Clinic · Case Western Reserve University</span>
+          <span style="margin-top:0.2rem;color:rgba(214,234,244,0.55);">Contact: <a href="mailto:placeholder@ccf.org" style="color:var(--orange);">placeholder@ccf.org</a></span>
         </div>
       </div>
 
       <nav class="page-nav">
         <a href="#methods">Methods</a>
+        <a href="#demographics">Demographics</a>
         <a href="#results">Results</a>
+        <a href="#outlier">Outlier Case</a>
         <a href="#mechanisms">Discussion</a>
         <a href="#limitations">Limitations</a>
       </nav>
 
       <div class="stats">
-        <div class="stat"><div class="stat-val big">[N]</div><div class="stat-label">[Metric]</div></div>
-        <div class="stat"><div class="stat-val big">[N]</div><div class="stat-label">[Metric]</div></div>
-        <div class="stat"><div class="stat-val">[%]</div><div class="stat-label">[Metric]</div></div>
-        <div class="stat"><div class="stat-val">[%]</div><div class="stat-label">[Metric]</div></div>
+        <div class="stat"><div class="stat-val big">65</div><div class="stat-label">Eyes studied</div></div>
+        <div class="stat"><div class="stat-val big">39</div><div class="stat-label">Patients enrolled</div></div>
+        <div class="stat"><div class="stat-val">+4.5</div><div class="stat-label">Mean Δ cells/mm³ (n.s.)</div></div>
+        <div class="stat"><div class="stat-val">95%</div><div class="stat-label">SUN grade unchanged</div></div>
       </div>
 
       <div class="container">
+
+        <!-- METHODS -->
         <div class="section" id="methods">
           <div class="section-title"><span class="dot"></span>Methods</div>
           <div class="card">
             <div class="steps">
-              <div class="step"><div class="step-num">1</div><div class="step-body"><strong>[Step title]</strong><span>[Description.]</span></div></div>
-              <div class="step"><div class="step-num">2</div><div class="step-body"><strong>[Step title]</strong><span>[Description.]</span></div></div>
-              <div class="step"><div class="step-num">3</div><div class="step-body"><strong>[Step title]</strong><span>[Description.]</span></div></div>
-              <div class="step"><div class="step-num">4</div><div class="step-body"><strong>[Step title]</strong><span>[Description.]</span></div></div>
+              <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Study Design</strong><span>Prospective case series at a single uveitis referral center (Cole Eye Institute, Cleveland Clinic).</span></div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Population</strong><span>Patients with uveitis involving the anterior segment. N = 65 eyes, 39 patients. Linear mixed-effects models used to account for bilateral eyes.</span></div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Dilation Protocol</strong><span>Phenylephrine 2.5% and/or tropicamide 1% per physician preference. Pre- and post-dilation slit lamp exam with SUN grading for AC cells, pigment, and flare.</span></div></div>
+              <div class="step"><div class="step-num">4</div><div class="step-body"><strong>AS-OCT Imaging</strong><span>Paired volumetric cube scans (4×6 mm, 65 B-scans) using the ANTERION® swept-source device, acquired pre- and post-dilation.</span></div></div>
+              <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Quantification</strong><span>Semi-automated segmentation and threshold-based hyperreflective particle detection to generate anterior chamber cell density (cells/mm³).</span></div></div>
+              <div class="step"><div class="step-num">6</div><div class="step-body"><strong>Statistical Analysis</strong><span>Linear mixed-effects models accounting for bilateral eyes. Bland-Altman analysis for pre- vs. post-dilation agreement (mean diff = +4.5 cells/mm³, 95% LoA: −90.1 to +99.0, p = 0.46).</span></div></div>
             </div>
           </div>
         </div>
 
-        <div class="section" id="results">
-          <div class="section-title"><span class="dot"></span>Results</div>
+        <!-- DEMOGRAPHICS -->
+        <div class="section" id="demographics">
+          <div class="section-title"><span class="dot"></span>Table 1. Baseline Characteristics</div>
           <div class="table-wrap">
             <table>
-              <thead><tr><th>[Outcome]</th><th>[Group 1]</th><th>[Group 2]</th><th>[Group 3]</th></tr></thead>
+              <thead><tr><th style="width:58%">Characteristic</th><th>Overall (N = 65 eyes, 39 patients)</th></tr></thead>
               <tbody>
-                <tr><td>[Row]</td><td class="protect">[value]</td><td class="ns">[value]</td><td class="protect">[value]</td></tr>
-                <tr><td>[Row]</td><td class="protect">[value]</td><td class="ns">[value]</td><td class="protect">[value]</td></tr>
+                <tr class="group-row"><td colspan="2">Sex, n (%)</td></tr>
+                <tr><td class="sub">Male</td><td>47 (72.3%)</td></tr>
+                <tr><td class="sub">Female</td><td>18 (27.7%)</td></tr>
+                <tr class="group-row"><td colspan="2">Lens status, n (%)</td></tr>
+                <tr><td class="sub">Phakic</td><td>34 (52.3%)</td></tr>
+                <tr><td class="sub">Pseudophakic</td><td>31 (47.7%)</td></tr>
+                <tr class="group-row"><td colspan="2">Eye, n (%)</td></tr>
+                <tr><td class="sub">OD</td><td>37 (56.9%)</td></tr>
+                <tr><td class="sub">OS</td><td>28 (43.1%)</td></tr>
+                <tr class="group-row"><td colspan="2">Race/ethnicity, n (%)</td></tr>
+                <tr><td class="sub">White</td><td>36 (55.4%)</td></tr>
+                <tr><td class="sub">Black</td><td>22 (33.8%)</td></tr>
+                <tr><td class="sub">Hispanic</td><td>2 (3.1%)</td></tr>
+                <tr><td class="sub">Asian</td><td>2 (3.1%)</td></tr>
+                <tr><td class="sub">Other</td><td>3 (4.6%)</td></tr>
+                <tr class="group-row"><td colspan="2">Anatomic classification, n (%)</td></tr>
+                <tr><td class="sub">Anterior</td><td>32 (49.2%)</td></tr>
+                <tr><td class="sub">Posterior</td><td>2 (3.1%)</td></tr>
+                <tr><td class="sub">Panuveitis</td><td>28 (43.1%)</td></tr>
+                <tr><td class="sub">Scleritis</td><td>3 (4.6%)</td></tr>
+                <tr class="group-row"><td colspan="2">Iris color, n (%)</td></tr>
+                <tr><td class="sub">Brown</td><td>40 (61.5%)</td></tr>
+                <tr><td class="sub">Green</td><td>11 (16.9%)</td></tr>
+                <tr><td class="sub">Blue</td><td>14 (21.5%)</td></tr>
               </tbody>
             </table>
-            <div class="table-note">[Legend.]</div>
+            <div class="table-note">Baseline demographic and clinical characteristics of the study cohort.</div>
           </div>
         </div>
 
+        <!-- RESULTS WITH CHARTS -->
+        <div class="section" id="results">
+          <div class="section-title"><span class="dot"></span>Results</div>
+
+          <div class="chart-grid">
+            <!-- Figure 1: Pre-dilation Clinical Grade Distribution -->
+            <div class="chart-card">
+              <div class="chart-title">Fig. 1 — Pre-dilation Clinical Grade Distribution (SUN)</div>
+              <div class="bar-chart">
+                <div class="bar-row"><div class="bar-label">0.0</div><div class="bar-track"><div class="bar-fill pre" style="width:97%">38</div></div></div>
+                <div class="bar-row"><div class="bar-label">0.5</div><div class="bar-track"><div class="bar-fill pre" style="width:26%">10</div></div></div>
+                <div class="bar-row"><div class="bar-label">1.0</div><div class="bar-track"><div class="bar-fill pre" style="width:15%">6</div></div></div>
+                <div class="bar-row"><div class="bar-label">2.0</div><div class="bar-track"><div class="bar-fill pre" style="width:10%">4</div></div></div>
+                <div class="bar-row"><div class="bar-label">3.0</div><div class="bar-track"><div class="bar-fill pre" style="width:8%">3</div></div></div>
+                <div class="bar-row"><div class="bar-label">4.0</div><div class="bar-track"><div class="bar-fill pre" style="width:10%">4</div></div></div>
+              </div>
+              <div style="font-size:0.68rem;color:var(--muted);text-align:center;margin-top:0.4rem;">Clinical Grade (SUN) — Number of Eyes</div>
+            </div>
+
+            <!-- Figure 2: Pigment Grade Distribution Pre vs Post -->
+            <div class="chart-card">
+              <div class="chart-title">Fig. 2 — Pigment Grade Distribution: Pre- vs. Post-Dilation</div>
+              <div class="bar-chart">
+                <div style="font-size:0.68rem;color:var(--muted);margin-bottom:0.3rem;">Grade 0.0</div>
+                <div class="bar-row" style="margin-bottom:2px"><div class="bar-label" style="width:28px;font-size:0.62rem;">Pre</div><div class="bar-track"><div class="bar-fill pre" style="width:80%">52</div></div></div>
+                <div class="bar-row" style="margin-bottom:6px"><div class="bar-label" style="width:28px;font-size:0.62rem;">Post</div><div class="bar-track"><div class="bar-fill post" style="width:51%">33</div></div></div>
+                <div style="font-size:0.68rem;color:var(--muted);margin-bottom:0.3rem;">Grade 0.5</div>
+                <div class="bar-row" style="margin-bottom:2px"><div class="bar-label" style="width:28px;font-size:0.62rem;">Pre</div><div class="bar-track"><div class="bar-fill pre" style="width:18%">12</div></div></div>
+                <div class="bar-row" style="margin-bottom:6px"><div class="bar-label" style="width:28px;font-size:0.62rem;">Post</div><div class="bar-track"><div class="bar-fill post" style="width:29%">19</div></div></div>
+                <div style="font-size:0.68rem;color:var(--muted);margin-bottom:0.3rem;">Grade ≥1.0</div>
+                <div class="bar-row" style="margin-bottom:2px"><div class="bar-label" style="width:28px;font-size:0.62rem;">Pre</div><div class="bar-track"><div class="bar-fill pre" style="width:2%">&nbsp;</div><span style="font-size:0.65rem;color:var(--muted);padding-left:4px;">1</span></div></div>
+                <div class="bar-row"><div class="bar-label" style="width:28px;font-size:0.62rem;">Post</div><div class="bar-track"><div class="bar-fill post" style="width:20%">13</div></div></div>
+              </div>
+              <div class="bar-legend"><span class="leg-pre">Pre-dilation</span><span class="leg-post">Post-dilation</span></div>
+            </div>
+
+            <!-- Figure 3: Distribution of Change in Clinical Grade -->
+            <div class="chart-card">
+              <div class="chart-title">Fig. 3 — Distribution of Change in Clinical Grade (Post − Pre)</div>
+              <div class="bar-chart">
+                <div class="bar-row"><div class="bar-label">−1.0</div><div class="bar-track"><div class="bar-fill change" style="width:2%">1</div></div></div>
+                <div class="bar-row"><div class="bar-label">−0.5</div><div class="bar-track"><div class="bar-fill change" style="width:2%">1</div></div></div>
+                <div class="bar-row"><div class="bar-label">0.0</div><div class="bar-track"><div class="bar-fill change" style="width:100%">62</div></div></div>
+                <div class="bar-row"><div class="bar-label">+1.5</div><div class="bar-track"><div class="bar-fill change" style="width:2%">1</div></div></div>
+              </div>
+              <div style="font-size:0.68rem;color:var(--muted);text-align:center;margin-top:0.4rem;">95% of eyes had no change in SUN clinical grade</div>
+            </div>
+
+            <!-- Figure 4: Density Fluctuation by Pigment Change Group -->
+            <div class="chart-card">
+              <div class="chart-title">Fig. 4 — Density Fluctuation by Pigment Change Group</div>
+              <div class="density-chart">
+                <div class="d-bar-wrap">
+                  <div class="d-bar" style="height:8px; background:#5B8DB8;">4.6</div>
+                  <div class="d-bar-label">No Pigment<br>Change</div>
+                  <div class="d-bar-n">(n=41)</div>
+                </div>
+                <div class="d-bar-wrap">
+                  <div class="d-bar" style="height:42px; background:#2E86AB;">27.4</div>
+                  <div class="d-bar-label">Any Pigment<br>Change ≥0.5</div>
+                  <div class="d-bar-n">(n=24)</div>
+                </div>
+                <div class="d-bar-wrap">
+                  <div class="d-bar" style="height:100px; background:#1B3A5C;">66.2</div>
+                  <div class="d-bar-label">Large Pigment<br>Change ≥1.0</div>
+                  <div class="d-bar-n">(n=9)</div>
+                </div>
+              </div>
+              <div style="font-size:0.68rem;color:var(--muted);text-align:center;margin-top:0.5rem;">Mean |ΔAC Cell Density| (cells/mm³) — eyes with large pigment change showed ~14× greater fluctuation</div>
+            </div>
+          </div>
+
+          <!-- Bland-Altman summary card -->
+          <div class="card">
+            <div class="card-title">Fig. 5 — Pre- vs. Post-Dilation Anterior Chamber Hyperreflective Particle Density (Bland-Altman)</div>
+            <div class="ba-plot">
+              <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans, sans-serif">
+                <line x1="50" y1="20" x2="50" y2="210" stroke="#D0DDE8" stroke-width="1.5"/>
+                <line x1="50" y1="210" x2="390" y2="210" stroke="#D0DDE8" stroke-width="1.5"/>
+                <line x1="50" y1="105" x2="390" y2="105" stroke="#E87722" stroke-width="1.5" stroke-dasharray="5,3"/>
+                <line x1="50" y1="50" x2="390" y2="50" stroke="#1A7FAA" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="50" y1="165" x2="390" y2="165" stroke="#1A7FAA" stroke-width="1" stroke-dasharray="3,3"/>
+                <text x="393" y="109" font-size="8" fill="#E87722">+4.5</text>
+                <text x="393" y="54" font-size="8" fill="#1A7FAA">+99.0</text>
+                <text x="393" y="169" font-size="8" fill="#1A7FAA">−90.1</text>
+                <text x="220" y="228" font-size="9" fill="#5C6B7A" text-anchor="middle">Mean Anterior Chamber Particle Density (cells/mm³)</text>
+                <text x="14" y="125" font-size="9" fill="#5C6B7A" text-anchor="middle" transform="rotate(-90,14,125)">Difference (Post − Pre, cells/mm³)</text>
+                <text x="44" y="54" font-size="7" fill="#5C6B7A" text-anchor="end">100</text>
+                <text x="44" y="109" font-size="7" fill="#5C6B7A" text-anchor="end">0</text>
+                <text x="44" y="169" font-size="7" fill="#5C6B7A" text-anchor="end">−100</text>
+                <text x="90"  y="222" font-size="7" fill="#5C6B7A" text-anchor="middle">0</text>
+                <text x="170" y="222" font-size="7" fill="#5C6B7A" text-anchor="middle">200</text>
+                <text x="250" y="222" font-size="7" fill="#5C6B7A" text-anchor="middle">400</text>
+                <text x="330" y="222" font-size="7" fill="#5C6B7A" text-anchor="middle">600</text>
+                <circle cx="92" cy="108" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="98" cy="102" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="103" cy="112" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="88" cy="98" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="110" cy="107" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="115" cy="118" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="120" cy="95" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="95" cy="90" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="130" cy="105" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="125" cy="115" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="140" cy="100" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="145" cy="110" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="150" cy="118" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="155" cy="95" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="160" cy="108" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="165" cy="102" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="172" cy="120" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="178" cy="93" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="185" cy="107" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="190" cy="115" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="195" cy="100" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="102" cy="130" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="108" cy="85" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="135" cy="122" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="142" cy="88" r="3" fill="#1B3A5C" opacity="0.6"/>
+                <circle cx="358" cy="43" r="4" fill="#C0400A" opacity="0.85"/>
+                <text x="355" y="38" font-size="7" fill="#C0400A">outlier</text>
+                <circle cx="60" cy="30" r="3" fill="#1B3A5C" opacity="0.7"/>
+                <text x="66" y="33" font-size="7" fill="#5C6B7A">Individual eye</text>
+                <line x1="115" y1="30" x2="135" y2="30" stroke="#E87722" stroke-width="1.5" stroke-dasharray="4,2"/>
+                <text x="138" y="33" font-size="7" fill="#E87722">Mean diff</text>
+                <line x1="185" y1="30" x2="205" y2="30" stroke="#1A7FAA" stroke-width="1" stroke-dasharray="3,2"/>
+                <text x="208" y="33" font-size="7" fill="#1A7FAA">±1.96 SD</text>
+              </svg>
+            </div>
+            <div class="table-note" style="padding-top:0.5rem;">Mean difference = +4.5 cells/mm³; 95% limits of agreement: −90.1 to +99.0 cells/mm³; p = 0.46 (not significant). One outlier (red) driven by grade 4+ pigment dispersion post-dilation.</div>
+          </div>
+        </div>
+
+        <!-- OUTLIER CASE -->
+        <div class="section" id="outlier">
+          <div class="section-title"><span class="dot"></span>Outlier Case</div>
+          <p style="font-size:0.83rem;color:var(--muted);margin-bottom:0.75rem;">The following case illustrates how grade 4+ pigment dispersion post-dilation dramatically elevated AS-OCT hyperreflective particle counts with no corresponding change in clinical SUN cell grade — demonstrating the key confound when using AS-OCT in dilated eyes with significant pigment release.</p>
+          <div class="outlier-grid">
+            <div class="outlier-card">
+              <div class="o-label">Pre-Dilation</div>
+              <div class="o-density pre">7.9<span style="font-size:0.9rem;font-family:'DM Sans',sans-serif;font-weight:400;"> cells/mm³</span></div>
+              <div style="margin-top:0.5rem;"><span class="o-tag">SUN cell grade: 0</span><span class="o-tag">Pigment grade: 0</span></div>
+            </div>
+            <div class="outlier-card">
+              <div class="o-label">Post-Dilation</div>
+              <div class="o-density post">379.7<span style="font-size:0.9rem;font-family:'DM Sans',sans-serif;font-weight:400;"> cells/mm³</span></div>
+              <div style="margin-top:0.5rem;"><span class="o-tag">SUN cell grade: 0</span><span class="o-tag warn">Pigment grade: 4+</span></div>
+            </div>
+          </div>
+          <div class="outlier-delta">
+            Δ = <strong>+371.8 cells/mm³</strong> — entire increase attributable to pigment dispersion; SUN cell grade unchanged at 0
+          </div>
+        </div>
+
+        <!-- DISCUSSION -->
         <div class="section" id="mechanisms">
           <div class="section-title"><span class="dot"></span>Discussion</div>
           <div class="mech-grid">
-            <div class="mech-card"><div class="mech-icon">🔬</div><div class="mech-title">[Theme]</div><div class="mech-desc">[Placeholder.]</div></div>
-            <div class="mech-card"><div class="mech-icon">💧</div><div class="mech-title">[Theme]</div><div class="mech-desc">[Placeholder.]</div></div>
-            <div class="mech-card"><div class="mech-icon">⚖️</div><div class="mech-title">[Theme]</div><div class="mech-desc">[Placeholder.]</div></div>
-            <div class="mech-card"><div class="mech-icon">📊</div><div class="mech-title">[Theme]</div><div class="mech-desc">[Placeholder.]</div></div>
+            <div class="mech-card"><div class="mech-icon">🔬</div><div class="mech-title">Pigment Dispersion</div><div class="mech-desc">Pharmacologic dilation can liberate iris pigment into the anterior chamber. AS-OCT threshold-based detection cannot distinguish pigment granules from inflammatory cells, producing spurious density elevations — particularly in eyes with dense brown irides or posterior synechiae.</div></div>
+            <div class="mech-card"><div class="mech-icon">💧</div><div class="mech-title">Aqueous Volume Dilution</div><div class="mech-desc">Dilation transiently increases AC fluid volume. The same number of particles distributed across a larger AS-OCT scan volume registers as lower apparent density, likely explaining the density decreases observed in most eyes without significant pigment release.</div></div>
+            <div class="mech-card"><div class="mech-icon">⚖️</div><div class="mech-title">Clinical Grade Stability</div><div class="mech-desc">SUN grading was unchanged in 95% of eyes post-dilation, confirming that slit-lamp clinical assessment is robust to pharmacologic dilation. The two modalities capture overlapping but mechanistically distinct aspects of anterior chamber inflammation.</div></div>
+            <div class="mech-card"><div class="mech-icon">📊</div><div class="mech-title">Implications for Monitoring</div><div class="mech-desc">Pre-dilation AS-OCT imaging should be prioritized for serial monitoring — especially in patients with brown irides, a history of pigment dispersion, or elevated baseline pigment grade — to avoid overestimating inflammatory activity.</div></div>
           </div>
         </div>
 
+        <!-- LIMITATIONS -->
         <div class="section" id="limitations">
           <div class="section-title"><span class="dot"></span>Limitations</div>
           <div class="card">
             <ul class="lim-list">
-              <li>[Placeholder limitation 1.]</li>
-              <li>[Placeholder limitation 2.]</li>
-              <li>[Placeholder limitation 3.]</li>
+              <li>AS-OCT quantification cannot distinguish inflammatory hyperreflective particles from pigment-derived particles — a fundamental limitation of all threshold-based detection algorithms.</li>
+              <li>Dilation may transiently increase AC fluid volume, diluting apparent particle density in the fixed AS-OCT scan volume; this confounds pre-to-post comparisons in both directions.</li>
+              <li>Single-center prospective case series; findings may not generalize to different dilation agents, imaging devices, or patient populations with varying disease activity.</li>
+              <li>Subgroup analyses of outlier eyes with high pigment release were limited by small sample size within this group (n = 9 with large pigment change ≥1.0 grade).</li>
             </ul>
           </div>
         </div>
+
       </div>
 
       <div class="contact">
         <strong>Contact &amp; Correspondence</strong>
-        Cindy [Last Name] — Cole Eye Institute, Cleveland Clinic<br>
+        Cindy Chen, BA — Cole Eye Institute, Cleveland Clinic<br>
         <a href="mailto:placeholder@ccf.org">placeholder@ccf.org</a>
-        <div style="margin-top:0.8rem; font-size:0.72rem; opacity:0.6;">[PLACEHOLDER — Funding / Meeting]</div>
+        <div style="margin-top:0.8rem;font-size:0.72rem;opacity:0.6;">
+          Funding: NIH-NEI P30 Core Grant · Research to Prevent Blindness, Inc. · Cleveland Eye Bank Foundation<br>
+          ARVO 2026 Annual Meeting · Poster #4002–0216<br><br>
+          Disclosures — CC, ENH, YM, VB, DS, MM, AW, BS, SB, MJS, NM, DS, KB, AL: None. SS: Consulting: 4DMT, Alimera, Abbvie, Apellis, Astellas, Bausch and Lomb, Clearside, Eyepoint, Harrow, Genentech/Roche, Kodiak, Merck, Regeneron, RegenXBio, Ripple, Volk, and Zeiss; Research support: Acelyrin, Gilead, Genentech/Roche, Santen, IONIS, Kodiak. SKS: Grants: Regeneron, Eyevensys, Eyepoint, and Gilead; Consulting: Adverum, Novartis, Zeiss, and Bausch and Lomb.
+        </div>
       </div>
     </div>
 
