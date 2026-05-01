@@ -740,6 +740,182 @@
     color: var(--dark);
   }
   .outlier-delta strong { color: var(--risk); }
+
+  /* ── COMPARISON COLUMNS (Sandeep) ── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 720px) { .compare-grid { grid-template-columns: 1fr; } }
+  .compare-col {
+    border-radius: 12px;
+    padding: 1rem;
+    border: 2px solid;
+  }
+  .compare-col.manual {
+    background: #FAF6F0;
+    border-color: #C0400A;
+  }
+  .compare-col.tool {
+    background: #EDF7EE;
+    border-color: #2E7D32;
+  }
+  .compare-header {
+    text-align: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    width: fit-content;
+    margin: 0 auto 0.85rem;
+  }
+  .compare-col.manual .compare-header { color: #8B3A1A; }
+  .compare-col.tool .compare-header { color: #1F5E22; }
+
+  .img-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.4rem;
+    margin-bottom: 0.85rem;
+  }
+  .img-cell {
+    text-align: center;
+  }
+  .img-cell .img-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.25rem;
+  }
+  .img-cell .img-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #E8EEF3;
+    border: 1px dashed #BBC8D4;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 0.65rem;
+    font-style: italic;
+  }
+  .img-cell img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: #E8EEF3;
+  }
+
+  .dice-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.7rem;
+  }
+  .dice-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 0.7rem 0.5rem;
+    text-align: center;
+    border: 2px solid;
+  }
+  .dice-card.manual { border-color: #C0400A; }
+  .dice-card.tool { border-color: #2E7D32; }
+  .dice-card .dice-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.1;
+  }
+  .dice-card .dice-sub {
+    font-size: 0.62rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+    line-height: 1.2;
+  }
+  .dice-card .dice-val {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.1rem;
+    line-height: 1;
+    margin-top: 0.4rem;
+  }
+  .dice-card.manual .dice-val { color: #C0400A; }
+  .dice-card.tool .dice-val { color: #2E7D32; }
+  .dice-card .dice-ci {
+    font-size: 0.7rem;
+    color: var(--dark);
+    margin-top: 0.3rem;
+  }
+  .dice-card .arrow-up {
+    color: #2E7D32;
+    font-size: 1.1rem;
+    margin-right: 0.15rem;
+  }
+
+  .compare-stat-row {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 0.7rem 0.85rem;
+    margin-bottom: 0.7rem;
+    border: 1px solid var(--border);
+    text-align: center;
+    font-size: 0.88rem;
+    line-height: 1.4;
+  }
+  .compare-stat-row strong { color: var(--navy); }
+  .stat-time-manual { color: #C0400A; font-weight: 700; }
+  .stat-time-tool { color: #2E7D32; font-weight: 700; }
+  .badge-faster {
+    display: inline-block;
+    background: #2E7D32;
+    color: var(--white);
+    padding: 0.15rem 0.55rem;
+    border-radius: 12px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin-left: 0.4rem;
+  }
+
+  .workflow-box {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+  }
+  .workflow-box h4 {
+    font-size: 0.95rem;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+    font-family: 'DM Serif Display', serif;
+  }
+  .workflow-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .workflow-box ul li {
+    font-size: 0.83rem;
+    color: var(--dark);
+    padding: 0.25rem 0;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .workflow-box ul li::before {
+    content: '·';
+    position: absolute;
+    left: 0.3rem;
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 0.9;
+  }
 </style>
 </head>
 <body>
@@ -832,8 +1008,8 @@
         <a href="#/sandeep" class="dir-card" data-nav="sandeep">
           <div class="dir-avatar">S</div>
           <div class="dir-role">Software Developer</div>
-          <div class="dir-name">Sandeep [Last Name]</div>
-          <div class="dir-focus">[PLACEHOLDER — brief research focus description, 1–2 sentences.]</div>
+          <div class="dir-name">Sandeep Singh</div>
+          <div class="dir-focus">Towards objective fundus autofluorescence grading — ARVO 2026 development and validation of a semiautomated, reference-thresholded FAF analysis tool tested across 20 Stargardt eyes and three graders.</div>
           <div class="dir-arrow">View profile →</div>
         </a>
       </div>
@@ -1964,89 +2140,275 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- PAGE 8: SANDEEP [PLACEHOLDER]                                 -->
+    <!-- PAGE 8: SANDEEP SINGH — FAF Semiautomated Tool                -->
     <!-- ============================================================ -->
     <div class="page" id="page-sandeep">
       <div class="hero">
-        <div class="hero-label">[PLACEHOLDER · Venue / Year]</div>
-        <h1>[PLACEHOLDER — Project or Paper Title]</h1>
-        <div class="hero-question">[PLACEHOLDER — central research question.]</div>
-        <div class="hero-answer"><strong>Central finding:</strong> [PLACEHOLDER — headline result.]</div>
+        <div class="hero-label">ARVO 2026 · Cole Eye Institute</div>
+        <h1>Towards Objective Fundus Autofluorescence Grading: A Semiautomated Tool for Quantitative Assessment of Retinal Disease</h1>
+        <div class="hero-question">
+          Can a reference-based intensity thresholding tool reduce intergrader variability and annotation time in fundus autofluorescence (FAF) lesion quantification compared to manual freehand segmentation?
+        </div>
+        <div class="hero-answer">
+          <strong>Central finding:</strong> The semiautomated tool produced significantly higher intergrader spatial reproducibility for QDAF (Dice 0.80 vs 0.44) and TDAF (0.89 vs 0.60), with comparable DDAF agreement, and reduced mean annotation time by 25% (7.7 vs 10.2 min/eye).
+        </div>
         <div class="authors">
-          <span>Sandeep [Last Name], [Degree] · [Co-author 1] · [Co-author 2] · [Senior Author]</span>
-          <span style="margin-top:0.3rem; color: rgba(214,234,244,0.55);">Cole Eye Institute, Cleveland Clinic · Case Western Reserve University</span>
-          <span style="margin-top:0.2rem; color: rgba(214,234,244,0.55);">Contact: <a href="mailto:placeholder@ccf.org" style="color:var(--orange);">placeholder@ccf.org</a></span>
+          <span>Sandeep Singh, BS · Victor Bellanda, MD · Yuka Mizuno, MD · Cindy Chen, BS · Kimberly Baynes, MSN · Sunil Srivastava, MD · Sumit Sharma, MD</span>
+          <span style="margin-top:0.3rem;color:rgba(214,234,244,0.55);">Cole Eye Institute, Cleveland Clinic · Case Western Reserve University</span>
+          <span style="margin-top:0.2rem;color:rgba(214,234,244,0.55);">Contact: <a href="mailto:placeholder@ccf.org" style="color:var(--orange);">placeholder@ccf.org</a></span>
         </div>
       </div>
 
       <nav class="page-nav">
+        <a href="#background">Background</a>
         <a href="#methods">Methods</a>
+        <a href="#comparison">Comparison</a>
         <a href="#results">Results</a>
         <a href="#mechanisms">Discussion</a>
         <a href="#limitations">Limitations</a>
       </nav>
 
       <div class="stats">
-        <div class="stat"><div class="stat-val big">[N]</div><div class="stat-label">[Metric]</div></div>
-        <div class="stat"><div class="stat-val big">[N]</div><div class="stat-label">[Metric]</div></div>
-        <div class="stat"><div class="stat-val">[%]</div><div class="stat-label">[Metric]</div></div>
-        <div class="stat"><div class="stat-val">[%]</div><div class="stat-label">[Metric]</div></div>
+        <div class="stat"><div class="stat-val big">20</div><div class="stat-label">Stargardt eyes graded</div></div>
+        <div class="stat"><div class="stat-val big">3</div><div class="stat-label">Trained graders</div></div>
+        <div class="stat"><div class="stat-val">↑0.89</div><div class="stat-label">TDAF Dice (vs 0.60)</div></div>
+        <div class="stat"><div class="stat-val">25%</div><div class="stat-label">Faster annotation</div></div>
       </div>
 
       <div class="container">
+
+        <!-- BACKGROUND -->
+        <div class="section" id="background">
+          <div class="section-title"><span class="dot"></span>Background</div>
+          <div class="card">
+            <p style="font-size:0.88rem; line-height:1.6; color:var(--dark);">
+              Fundus autofluorescence (FAF) is widely used to grade retinal disease lesions in clinical care and as a clinical trial endpoint, but current grading suffers from intergrader variability — especially when defining partial signal loss boundaries and consistent intensity thresholds for lesion edges. Existing methods rely on freehand subjective segmentation and lack standardization. To address these limitations, we developed a semiautomated analysis tool that applies reference-based thresholds to standardize lesion quantification and improve objectivity, reproducibility, and annotation efficiency for research and longitudinal monitoring.
+            </p>
+          </div>
+        </div>
+
+        <!-- METHODS -->
         <div class="section" id="methods">
           <div class="section-title"><span class="dot"></span>Methods</div>
           <div class="card">
             <div class="steps">
-              <div class="step"><div class="step-num">1</div><div class="step-body"><strong>[Step title]</strong><span>[Description.]</span></div></div>
-              <div class="step"><div class="step-num">2</div><div class="step-body"><strong>[Step title]</strong><span>[Description.]</span></div></div>
-              <div class="step"><div class="step-num">3</div><div class="step-body"><strong>[Step title]</strong><span>[Description.]</span></div></div>
-              <div class="step"><div class="step-num">4</div><div class="step-body"><strong>[Step title]</strong><span>[Description.]</span></div></div>
+              <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Tool Development</strong><span>Python-based FAF analysis interface with user-guided area calibration, reference-based darkness thresholding, and freehand boundary tools with thresholding restricted to selected areas</span></div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Reference Threshold</strong><span>Lesion detection uses a reference darkness derived from a user-selected pixel representing the darkest vessel segment over the optic disc; users define minimum lesion intensity as a percentage of this reference</span></div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Boundary &amp; Editing Tools</strong><span>Freehand outlining with thresholding restricted to the selected area, plus an eraser tool for removal of vessels and artifacts within the region of interest</span></div></div>
+              <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Validation Cohort</strong><span>20 eyes with Stargardt disease graded by three trained graders using both the semiautomated tool and a manual Microsoft Paint workflow</span></div></div>
+              <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Outcome Measures</strong><span>DDAF (definitely decreased autofluorescence), QDAF (questionably decreased autofluorescence), and TDAF (total decreased autofluorescence) areas — segmented with both methods and compared via Dice similarity coefficients</span></div></div>
+              <div class="step"><div class="step-num">6</div><div class="step-body"><strong>Statistical Analysis</strong><span>Intergrader agreement compared between methods using Dice similarity coefficients; annotation time recorded per eye for each workflow</span></div></div>
             </div>
           </div>
         </div>
 
-        <div class="section" id="results">
-          <div class="section-title"><span class="dot"></span>Results</div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>[Outcome]</th><th>[Group 1]</th><th>[Group 2]</th><th>[Group 3]</th></tr></thead>
-              <tbody>
-                <tr><td>[Row]</td><td class="protect">[value]</td><td class="ns">[value]</td><td class="protect">[value]</td></tr>
-                <tr><td>[Row]</td><td class="protect">[value]</td><td class="ns">[value]</td><td class="protect">[value]</td></tr>
-              </tbody>
-            </table>
-            <div class="table-note">[Legend.]</div>
+        <!-- COMPARISON: MANUAL VS TOOL -->
+        <div class="section" id="comparison">
+          <div class="section-title"><span class="dot"></span>Manual vs. Semiautomated — Side-by-Side</div>
+
+          <div class="compare-grid">
+
+            <!-- ── MANUAL COLUMN ── -->
+            <div class="compare-col manual">
+              <div class="compare-header">Manual (MS Paint)</div>
+
+              <div class="img-row">
+                <div class="img-cell">
+                  <div class="img-label">Original</div>
+                  <img src="" alt="Manual original FAF image">
+                </div>
+                <div class="img-cell">
+                  <div class="img-label">Grader 1</div>
+                  <img src="" alt="Manual grader 1 segmentation">
+                </div>
+                <div class="img-cell">
+                  <div class="img-label">Grader 2</div>
+                  <img src="" alt="Manual grader 2 segmentation">
+                </div>
+                <div class="img-cell">
+                  <div class="img-label">Grader 3</div>
+                  <img src="" alt="Manual grader 3 segmentation">
+                </div>
+              </div>
+
+              <div class="dice-row">
+                <div class="dice-card manual">
+                  <div class="dice-label">DDAF Dice</div>
+                  <div class="dice-sub">Definitely Decreased Autofluorescence</div>
+                  <div class="dice-val">0.55</div>
+                  <div class="dice-ci">±0.35 (p=0.13)</div>
+                </div>
+                <div class="dice-card manual">
+                  <div class="dice-label">QDAF Dice</div>
+                  <div class="dice-sub">Questionably Decreased Autofluorescence</div>
+                  <div class="dice-val">0.44</div>
+                  <div class="dice-ci">±0.29 (p&lt;0.01)</div>
+                </div>
+                <div class="dice-card manual">
+                  <div class="dice-label">TDAF Dice</div>
+                  <div class="dice-sub">Total Decreased Autofluorescence</div>
+                  <div class="dice-val">0.60</div>
+                  <div class="dice-ci">±0.25 (p&lt;0.01)</div>
+                </div>
+              </div>
+
+              <div class="compare-stat-row">
+                <strong>Mean annotation time:</strong>
+                <span class="stat-time-manual">10.2 min/eye</span>
+                <span style="color:var(--muted); font-size:0.8rem;">(range 8.4–11.9 min)</span>
+              </div>
+
+              <div class="workflow-box">
+                <h4>Workflow</h4>
+                <ul>
+                  <li>Freehand segmentation in MS Paint</li>
+                  <li>Subjective boundary delineation</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- ── TOOL COLUMN ── -->
+            <div class="compare-col tool">
+              <div class="compare-header">Semiautomated Tool</div>
+
+              <div class="img-row">
+                <div class="img-cell">
+                  <div class="img-label">Original</div>
+                  <img src="" alt="Tool original FAF image">
+                </div>
+                <div class="img-cell">
+                  <div class="img-label">Grader 1</div>
+                  <img src="" alt="Tool grader 1 segmentation">
+                </div>
+                <div class="img-cell">
+                  <div class="img-label">Grader 2</div>
+                  <img src="" alt="Tool grader 2 segmentation">
+                </div>
+                <div class="img-cell">
+                  <div class="img-label">Grader 3</div>
+                  <img src="" alt="Tool grader 3 segmentation">
+                </div>
+              </div>
+
+              <div class="dice-row">
+                <div class="dice-card tool">
+                  <div class="dice-label">DDAF Dice</div>
+                  <div class="dice-sub">Definitely Decreased Autofluorescence</div>
+                  <div class="dice-val"><span class="arrow-up">↑</span>0.71</div>
+                  <div class="dice-ci">±0.31 (p=0.13)</div>
+                </div>
+                <div class="dice-card tool">
+                  <div class="dice-label">QDAF Dice</div>
+                  <div class="dice-sub">Questionably Decreased Autofluorescence</div>
+                  <div class="dice-val"><span class="arrow-up">↑</span>0.80</div>
+                  <div class="dice-ci">±0.16 (p&lt;0.01)</div>
+                </div>
+                <div class="dice-card tool">
+                  <div class="dice-label">TDAF Dice</div>
+                  <div class="dice-sub">Total Decreased Autofluorescence</div>
+                  <div class="dice-val"><span class="arrow-up">↑</span>0.89</div>
+                  <div class="dice-ci">±0.10 (p&lt;0.01)</div>
+                </div>
+              </div>
+
+              <div class="compare-stat-row">
+                <strong>Mean annotation time:</strong>
+                <span class="stat-time-tool">7.7 min/eye</span>
+                <span style="color:var(--muted); font-size:0.8rem;">(range 7.2–8.1 min)</span>
+                <span class="badge-faster">↑ 25% faster</span>
+              </div>
+
+              <div class="workflow-box">
+                <h4>Workflow</h4>
+                <ul>
+                  <li>Pixel intensity-based segmentation</li>
+                  <li>Threshold-guided boundary delineation</li>
+                </ul>
+              </div>
+            </div>
+
           </div>
         </div>
 
+        <!-- RESULTS TABLE -->
+        <div class="section" id="results">
+          <div class="section-title"><span class="dot"></span>Results — Intergrader Dice Coefficients</div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Outcome</th>
+                  <th>Manual (MS Paint)</th>
+                  <th>Semiautomated Tool</th>
+                  <th>p-value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>DDAF (Definitely Decreased AF)</td>
+                  <td class="risk-val">0.55 ± 0.35</td>
+                  <td class="protect">0.71 ± 0.31</td>
+                  <td class="ns">p = 0.13</td>
+                </tr>
+                <tr>
+                  <td>QDAF (Questionably Decreased AF)</td>
+                  <td class="risk-val">0.44 ± 0.29</td>
+                  <td class="protect">0.80 ± 0.16</td>
+                  <td class="risk-val">p &lt; 0.01</td>
+                </tr>
+                <tr>
+                  <td>TDAF (Total Decreased AF)</td>
+                  <td class="risk-val">0.60 ± 0.25</td>
+                  <td class="protect">0.89 ± 0.10</td>
+                  <td class="risk-val">p &lt; 0.01</td>
+                </tr>
+                <tr>
+                  <td>Mean annotation time (min/eye)</td>
+                  <td class="risk-val">10.2 (8.4–11.9)</td>
+                  <td class="protect">7.7 (7.2–8.1)</td>
+                  <td class="protect">25% reduction</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="table-note">Spatial agreement among graders was higher overall on the semiautomated tool than manual segmentation. The largest absolute improvements were observed for QDAF and TDAF — the categories most affected by subjective boundary thresholding.</div>
+          </div>
+        </div>
+
+        <!-- DISCUSSION -->
         <div class="section" id="mechanisms">
           <div class="section-title"><span class="dot"></span>Discussion</div>
           <div class="mech-grid">
-            <div class="mech-card"><div class="mech-icon">🔬</div><div class="mech-title">[Theme]</div><div class="mech-desc">[Placeholder.]</div></div>
-            <div class="mech-card"><div class="mech-icon">💧</div><div class="mech-title">[Theme]</div><div class="mech-desc">[Placeholder.]</div></div>
-            <div class="mech-card"><div class="mech-icon">⚖️</div><div class="mech-title">[Theme]</div><div class="mech-desc">[Placeholder.]</div></div>
-            <div class="mech-card"><div class="mech-icon">📊</div><div class="mech-title">[Theme]</div><div class="mech-desc">[Placeholder.]</div></div>
+            <div class="mech-card"><div class="mech-icon">🎯</div><div class="mech-title">Reference-Based Thresholding</div><div class="mech-desc">Anchoring lesion intensity to a per-image reference (darkest disc-vessel pixel) standardizes thresholds across images, scanners, and gain settings — removing a major source of intergrader variability.</div></div>
+            <div class="mech-card"><div class="mech-icon">📊</div><div class="mech-title">Largest Gains for Partial Signal</div><div class="mech-desc">QDAF showed the most dramatic improvement (Dice 0.44 → 0.80) — exactly where subjective grading struggles most: the gradient zone between normal and definitely decreased autofluorescence.</div></div>
+            <div class="mech-card"><div class="mech-icon">⚙️</div><div class="mech-title">Workflow Efficiency</div><div class="mech-desc">A 25% reduction in annotation time per eye, with a tighter range (7.2–8.1 vs 8.4–11.9 min), supports scalability for clinical trials and longitudinal monitoring of dystrophic and atrophic retinal diseases.</div></div>
+            <div class="mech-card"><div class="mech-icon">🔬</div><div class="mech-title">Trial &amp; Clinical Implications</div><div class="mech-desc">More reproducible boundary delineation directly improves the signal-to-noise ratio for FAF-based endpoints — narrowing required sample sizes and enabling more confident detection of treatment effects in retinal disease trials.</div></div>
           </div>
         </div>
 
+        <!-- LIMITATIONS -->
         <div class="section" id="limitations">
           <div class="section-title"><span class="dot"></span>Limitations</div>
           <div class="card">
             <ul class="lim-list">
-              <li>[Placeholder limitation 1.]</li>
-              <li>[Placeholder limitation 2.]</li>
-              <li>[Placeholder limitation 3.]</li>
+              <li>Validation limited to 20 Stargardt eyes; performance in other dystrophic and atrophic retinal diseases (geographic atrophy, retinitis pigmentosa) requires further study.</li>
+              <li>Three-grader cohort; broader multi-center, multi-grader validation would strengthen generalizability of the agreement metrics.</li>
+              <li>Reference pixel selection still introduces a small subjective component; future work could fully automate disc-vessel reference detection.</li>
+              <li>Dice agreement does not capture systematic bias — additional metrics (e.g. Bland-Altman of lesion area, sensitivity to longitudinal change) are needed for trial-endpoint qualification.</li>
+              <li>DDAF improvement did not reach statistical significance (p = 0.13), likely reflecting the smaller, sharply demarcated nature of DDAF lesions for which manual grading already performs reasonably well.</li>
             </ul>
           </div>
         </div>
+
       </div>
 
       <div class="contact">
         <strong>Contact &amp; Correspondence</strong>
-        Sandeep [Last Name] — Cole Eye Institute, Cleveland Clinic<br>
+        Sandeep Singh, BS — Cole Eye Institute, Cleveland Clinic<br>
         <a href="mailto:placeholder@ccf.org">placeholder@ccf.org</a>
-        <div style="margin-top:0.8rem; font-size:0.72rem; opacity:0.6;">[PLACEHOLDER — Funding / Meeting]</div>
+        <div style="margin-top:0.8rem;font-size:0.72rem;opacity:0.6;">
+          Funding: NIH-NEI P30 Core Grant · Research to Prevent Blindness, Inc.<br>
+          ARVO 2026 Annual Meeting · Cole Eye Institute, Cleveland Clinic
+        </div>
       </div>
     </div>
 
