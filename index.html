@@ -321,8 +321,6 @@
     border-bottom: 1px solid var(--border);
   }
   tbody td:first-child { text-align: left; font-weight: 500; }
-  tbody tr.group-row td { font-weight: 700; background: #E8F1F8; color: var(--navy); font-size: 0.78rem; text-align: left; }
-  tbody td.sub { padding-left: 1.6rem; font-weight: 400; color: var(--muted); }
   .protect { color: var(--protect); font-weight: 600; }
   .risk-val { color: var(--risk); font-weight: 600; }
   .ns { color: var(--muted); }
@@ -331,6 +329,39 @@
     color: var(--muted);
     padding: 0.4rem 0.7rem 0.6rem;
     font-style: italic;
+  }
+
+  /* ── FIGURES ── */
+  .fig-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin: 1rem 0 0.5rem;
+  }
+  .fig-grid.two { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 640px) {
+    .fig-grid, .fig-grid.two { grid-template-columns: 1fr; }
+  }
+  figure {
+    margin: 0;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  figure img {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+  }
+  figure.wide { margin: 1rem 0; }
+  figcaption {
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-style: italic;
+    padding: 0.4rem 0.2rem 0.1rem;
+    line-height: 1.4;
   }
 
   /* ── MECHANISM ── */
@@ -513,122 +544,6 @@
     border-radius: 3px;
     border: 1px dashed var(--orange);
   }
-
-  /* ── Figure image styles (for Cindy's section) ── */
-  .figure-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-    margin-bottom: 0.9rem;
-  }
-  @media (max-width: 580px) { .figure-grid { grid-template-columns: 1fr; } }
-  .figure-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-  }
-  .figure-card .figure-title {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--navy);
-    text-align: center;
-    margin-bottom: 0.6rem;
-    line-height: 1.3;
-  }
-  .figure-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-    background: #fafcff;
-    border: 1px dashed var(--border);
-    min-height: 140px;
-    display: block;
-  }
-  .figure-caption {
-    font-size: 0.68rem;
-    color: var(--muted);
-    text-align: center;
-    margin-top: 0.5rem;
-    line-height: 1.4;
-  }
-  .figure-full {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1rem;
-    margin-bottom: 0.9rem;
-  }
-  .figure-full img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-    background: #fafcff;
-    border: 1px dashed var(--border);
-    min-height: 200px;
-    display: block;
-  }
-
-  /* ── Outlier case styles ── */
-  .outlier-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-    margin-top: 0.75rem;
-  }
-  @media (max-width: 520px) { .outlier-grid { grid-template-columns: 1fr; } }
-  .outlier-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1rem;
-    text-align: center;
-  }
-  .outlier-card .o-label {
-    font-size: 0.72rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--muted);
-    margin-bottom: 0.5rem;
-  }
-  .outlier-card .o-density {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.8rem;
-    line-height: 1;
-    margin-bottom: 0.3rem;
-  }
-  .outlier-card .o-density.pre { color: var(--navy); }
-  .outlier-card .o-density.post { color: var(--risk); }
-  .outlier-card .o-tag {
-    display: inline-block;
-    font-size: 0.72rem;
-    background: #EEF4FA;
-    color: var(--navy);
-    border-radius: 4px;
-    padding: 0.15rem 0.5rem;
-    margin: 0.15rem 0.1rem;
-  }
-  .outlier-card .o-tag.warn {
-    background: #FDEBD0;
-    color: #7D4907;
-  }
-  .outlier-delta {
-    background: #FEF3E2;
-    border: 1px solid #F5CBA7;
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    text-align: center;
-    margin-top: 0.75rem;
-    font-size: 0.85rem;
-    color: var(--dark);
-  }
-  .outlier-delta strong {
-    color: var(--risk);
-    font-size: 1rem;
-  }
 </style>
 </head>
 <body>
@@ -649,12 +564,12 @@
       <a href="#/" data-page="home">
         <span>← Team Directory</span>
       </a>
-      <a href="#/victor" data-page="victor">Victor Bellanda <span class="role">MD</span></a>
-      <a href="#/cindy" data-page="cindy">Cindy Chen<span class="role">MD candidate</span></a>
-      <a href="#/egan" data-page="egan">Egan Sanchez<span class="role">MD candidate</span></a>
-      <a href="#/david" data-page="david">David Shin<span class="role">MD candidate</span></a>
-      <a href="#/Eliot" data-page="Eliot">Eliot N. Haddad<span class="role">MD candidate</span></a>
-      <a href="#/sandeep" data-page="sandeep">Sandeep Singh<span class="role">Software Developer</span></a>
+      <a href="#/victor" data-page="victor">Victor <span class="role">MD</span></a>
+      <a href="#/cindy" data-page="cindy">Cindy <span class="role">MD candidate</span></a>
+      <a href="#/egan" data-page="egan">Egan <span class="role">MD candidate</span></a>
+      <a href="#/david" data-page="david">David <span class="role">MD candidate</span></a>
+      <a href="#/Eliot" data-page="Eliot">Eliot <span class="role">MD candidate</span></a>
+      <a href="#/sandeep" data-page="sandeep">Sandeep <span class="role">Software Developer</span></a>
     </nav>
 
     <div class="sidebar-footer">
@@ -688,9 +603,9 @@
 
         <a href="#/cindy" class="dir-card" data-nav="cindy">
           <div class="dir-avatar">C</div>
-          <div class="dir-role">Research Scholar, BA</div>
-          <div class="dir-name">Cindy Chen</div>
-          <div class="dir-focus">Impact of pharmacologic dilation on volumetric AS-OCT quantification of anterior chamber cell density in uveitis — ARVO 2026 poster using prospective paired imaging data across 65 eyes.</div>
+          <div class="dir-role">MD candidate</div>
+          <div class="dir-name">Cindy [Last Name]</div>
+          <div class="dir-focus">[PLACEHOLDER — brief research focus description, 1–2 sentences.]</div>
           <div class="dir-arrow">View profile →</div>
         </a>
 
@@ -739,10 +654,10 @@
           How do ellipsoid zone (EZ) loss, DDAF, and TDAF areas progress over time in genetically confirmed Stargardt disease, and how does progression vary by genotype severity?
         </div>
         <div class="hero-answer">
-          <strong>Central finding:</strong> EZ loss, DDAF, and TDAF areas all progressed significantly across G1–G3, with rates increasing monotonically with genotype severity; EZ loss showed the most consistent and earliest signal, with G3 progressing 3.5× faster than G1.
+          <strong>Central finding:</strong> EZ loss, DDAF, and TDAF areas all progressed significantly across G1–G3, with rates increasing monotonically with genotype severity. EZ loss showed the most consistent and earliest signal — G3 progressed approximately 3.5× faster than G1 — and baseline √EZ loss independently predicted future TDAF enlargement.
         </div>
         <div class="authors">
-          <span>Victor Bellanda, MD · Cindy Chen · Yuka Mizuno · David Shin · Gabriel Castilho Barbosa · Egan Sanchez · Nitesh Mohan · Matthew J. Schulgit · Sandeep Singh · Paulo Simoes · Eliot N. Haddad · Kimberly Baynes · Justis P. Ehlers · Sunil K. Srivastava · Elias I. Traboulsi · Sumit Sharma</span>
+          <span>Victor Bellanda, MD · Cindy Chen, BA · Yuka Mizuno, MD · David Shin, BS · Gabriel Castilho Barbosa, MD · Egan Sanchez · Nitesh Mohan, BS · Matthew J. Schulgit, BS · Sandeep Singh, MS · Paulo Simoes, MD · Eliot N. Haddad, BS · Kimberly Baynes, MSN, RN · Justis P. Ehlers, MD · Sunil K. Srivastava, MD · Elias I. Traboulsi, MD · Sumit Sharma, MD</span>
           <span style="margin-top:0.3rem; color: rgba(214,234,244,0.55);">Cole Eye Institute, Cleveland Clinic · Case Western Reserve University</span>
           <span style="margin-top:0.2rem; color: rgba(214,234,244,0.55);">Contact: <a href="mailto:placeholder@ccf.org" style="color:var(--orange);">placeholder@ccf.org</a></span>
         </div>
@@ -751,9 +666,12 @@
       <nav class="page-nav">
         <a href="#methods">Methods</a>
         <a href="#sample">Sample</a>
+        <a href="#cross-sectional">Cross-Sectional</a>
         <a href="#progression">Progression</a>
+        <a href="#cross-measure">Cross-Measure</a>
         <a href="#bcva">BCVA</a>
         <a href="#predictors">Predictors</a>
+        <a href="#discussion">Discussion</a>
         <a href="#limitations">Limitations</a>
       </nav>
 
@@ -765,21 +683,40 @@
       </div>
 
       <div class="container">
+
+        <!-- ── 1. METHODS ── -->
         <div class="section" id="methods">
-          <div class="section-title"><span class="dot"></span>Methods</div>
+          <div class="section-title"><span class="dot"></span>1. Methods</div>
           <div class="card">
             <div class="steps">
               <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Cohort</strong><span>54 eyes from 27 patients with genetically confirmed Stargardt disease, classified into four genotype severity groups (G1–G4) based on ABCA4 variant pathogenicity</span></div></div>
-              <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Imaging Outcomes</strong><span>EZ loss area (OCT), DDAF and TDAF areas (FAF), all in mm². Square-root transformation applied to all area outcomes prior to modeling</span></div></div>
-              <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Censoring</strong><span>12 eyes (22%) censored at baseline due to &gt;95% EZ loss at enrollment. G4 disproportionately affected (6/8 eyes censored, 75%) — G4 included in cross-sectional but excluded from progression analyses</span></div></div>
-              <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Statistical Models</strong><span>Linear mixed-effects models with random intercept per patient (statsmodels MixedLM, REML). Cross-sectional: sqrt(outcome) ~ genotype × baseline_age + (1|patient). Progression: sqrt(outcome) ~ time_years + (1|patient), with genotype interaction for by-group analyses</span></div></div>
-              <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Predictor Models</strong><span>sqrt(outcome) ~ time_years × predictor + (1|patient), one predictor at a time, with FDR-Benjamini-Hochberg correction applied within each outcome. 95% CIs reported as Wald intervals</span></div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Imaging Outcomes</strong><span>EZ loss area (OCT), DDAF and TDAF areas (FAF), all in mm². Square-root transformation applied to all area outcomes prior to modeling to linearize radial spread of atrophic lesions</span></div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Censoring</strong><span>12 eyes (22%) censored at baseline due to &gt;95% EZ loss at enrollment. G4 disproportionately affected: 6/8 G4 eyes (75%) censored — remaining G4 follow-up data derive from a single patient. G4 included in cross-sectional but excluded from progression analyses</span></div></div>
+              <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Cross-Sectional Models</strong><span>Linear mixed-effects models with random intercept per patient (statsmodels MixedLM, REML): sqrt(outcome) ~ genotype × baseline_age + (1|patient)</span></div></div>
+              <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Progression Models</strong><span>sqrt(outcome) ~ time_years + (1|patient), with genotype interaction for by-group analyses. 42 eyes / 86 observations included; median follow-up 3.28 years (range 1.06–4.58)</span></div></div>
+              <div class="step"><div class="step-num">6</div><div class="step-body"><strong>Predictor Models</strong><span>sqrt(outcome) ~ time_years × predictor + (1|patient), one predictor at a time, with FDR-Benjamini-Hochberg correction applied within each outcome. 95% CIs reported as Wald intervals</span></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Censoring by Genotype Group</div>
+            <div class="table-wrap" style="margin-bottom:0; border:none; border-radius:0;">
+              <table>
+                <thead><tr><th>Group</th><th>N eyes</th><th>N censored</th><th>% censored</th></tr></thead>
+                <tbody>
+                  <tr><td>G1 (p.Gly1961Glu carriers)</td><td>12</td><td>0</td><td>0%</td></tr>
+                  <tr><td>G2 (hypomorphic carriers)</td><td>26</td><td>4</td><td>15.4%</td></tr>
+                  <tr><td>G3 (biallelic mod/mod+severe)</td><td>8</td><td>2</td><td>25.0%</td></tr>
+                  <tr><td>G4 (biallelic severe)</td><td>8</td><td class="risk-val">6</td><td class="risk-val">75.0%</td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
 
+        <!-- ── 2. SAMPLE DESCRIPTION ── -->
         <div class="section" id="sample">
-          <div class="section-title"><span class="dot"></span>Sample Description</div>
+          <div class="section-title"><span class="dot"></span>2. Sample Description</div>
           <div class="table-wrap">
             <table>
               <thead>
@@ -794,23 +731,28 @@
               </thead>
               <tbody>
                 <tr><td>N eyes / patients</td><td>54 / 27</td><td>12 / 6</td><td>26 / 13</td><td>8 / 4</td><td>8 / 4</td></tr>
-                <tr><td>Baseline age (mean±SD)</td><td>41.8 ± 17.7</td><td>41.9±15.9</td><td>45.8±15.5</td><td>29.1±22.0</td><td>41.4±19.6</td></tr>
-                <tr><td>Disease duration (med, y)</td><td>12.3</td><td>23.9</td><td>8.6</td><td>3.6</td><td>27.2</td></tr>
-                <tr><td>Fishman stage (med)</td><td>2 [2–3]</td><td>2 [1–3]</td><td>3 [2–3]</td><td>2 [2–2]</td><td>4 [3–4]</td></tr>
+                <tr><td>Baseline age, y (mean±SD)</td><td>41.8 ± 17.7</td><td>41.9±15.9</td><td>45.8±15.5</td><td>29.1±22.0</td><td>41.4±19.6</td></tr>
+                <tr><td>Age at onset, y (med [IQR])</td><td>19 [14.5–32]</td><td>21.5</td><td>32.0</td><td>17.0</td><td>14.5</td></tr>
+                <tr><td>Disease duration, y (med)</td><td>12.3</td><td>23.9</td><td>8.6</td><td>3.6</td><td>27.2</td></tr>
+                <tr><td>Fishman stage (med [IQR])</td><td>2 [2–3]</td><td>2 [1–3]</td><td>3 [2–3]</td><td>2 [2–2]</td><td>4 [3–4]</td></tr>
                 <tr><td>Multifocal, n (%)</td><td>19 (35%)</td><td>0 (0%)</td><td>13 (50%)</td><td>0 (0%)</td><td>6 (75%)</td></tr>
-                <tr><td>Baseline EZ loss (med, mm²)</td><td>6.97</td><td>2.54</td><td>6.97</td><td>7.14</td><td class="risk-val">28.18</td></tr>
-                <tr><td>Baseline EZ loss %</td><td>24.7%</td><td>9.0%</td><td>24.7%</td><td>25.2%</td><td class="risk-val">99.7%</td></tr>
+                <tr><td>Baseline EZ loss, mm² (med)</td><td>6.97</td><td>2.54</td><td>6.97</td><td>7.14</td><td class="risk-val">28.18</td></tr>
+                <tr><td>Baseline EZ loss % (med)</td><td>24.7%</td><td>9.0%</td><td>24.7%</td><td>25.2%</td><td class="risk-val">99.7%</td></tr>
+                <tr><td>Baseline DDAF, mm² (med)</td><td>1.19</td><td>0.16</td><td>5.87</td><td>0.17</td><td>11.98</td></tr>
+                <tr><td>Baseline TDAF, mm² (med)</td><td>5.08</td><td>2.14</td><td>13.27</td><td>3.51</td><td>18.90</td></tr>
+                <tr><td>Baseline BCVA (mean CST µm)</td><td>127 ± 61</td><td>127±53</td><td>144±74</td><td>104±20</td><td>94±25</td></tr>
                 <tr><td>Eyes censored at baseline</td><td>12 (22%)</td><td>0</td><td>4 (15%)</td><td>2 (25%)</td><td class="risk-val">6 (75%)</td></tr>
-                <tr><td>Median follow-up (y)</td><td>3.28</td><td>3.52</td><td>2.79</td><td>4.00</td><td>1.88</td></tr>
+                <tr><td>Median follow-up, y</td><td>3.28</td><td>3.52</td><td>2.79</td><td>4.00</td><td>1.88</td></tr>
               </tbody>
             </table>
-            <div class="table-note">G1 = p.Gly1961Glu carriers; G2 = hypomorphic carriers; G3 = biallelic moderate/moderate+severe; G4 = biallelic severe. Red highlights G4's substantially elevated baseline disease burden and censoring rate.</div>
+            <div class="table-note">G1 = p.Gly1961Glu carriers; G2 = hypomorphic carriers; G3 = biallelic moderate/moderate+severe; G4 = biallelic severe. Red highlights G4's substantially elevated baseline disease burden and censoring rate. med = median; IQR = interquartile range; CST = central subfield thickness.</div>
           </div>
         </div>
 
-        <div class="section">
-          <div class="section-title"><span class="dot"></span>Cross-Sectional Baseline Analyses</div>
-          <p style="font-size:0.83rem; color:var(--muted); margin-bottom:0.9rem;">Mixed models of sqrt(outcome) ~ genotype (ordinal) × baseline_age + (1|patient). Genotype trend reported per severity step.</p>
+        <!-- ── 3. CROSS-SECTIONAL ── -->
+        <div class="section" id="cross-sectional">
+          <div class="section-title"><span class="dot"></span>3. Cross-Sectional Baseline Analyses</div>
+          <p style="font-size:0.83rem; color:var(--muted); margin-bottom:0.9rem;">Mixed models of sqrt(outcome) ~ genotype (ordinal) × baseline_age + (1|patient). n=54 eyes (EZ loss) or 42 eyes (DDAF/TDAF). Genotype trend reported per severity step.</p>
           <div class="table-wrap">
             <table>
               <thead>
@@ -820,20 +762,28 @@
                   <th>SE</th>
                   <th>p-value</th>
                   <th>G4 vs G1 (√mm²)</th>
+                  <th>p-value</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>EZ loss area</td><td class="risk-val">+1.008</td><td>0.283</td><td class="risk-val">p &lt; 0.001</td><td class="risk-val">+3.072</td></tr>
-                <tr><td>DDAF area</td><td class="risk-val">+0.779</td><td>0.299</td><td class="risk-val">p = 0.009</td><td class="risk-val">+2.376</td></tr>
-                <tr><td>TDAF area</td><td class="risk-val">+0.868</td><td>0.242</td><td class="risk-val">p &lt; 0.001</td><td class="risk-val">+2.666</td></tr>
+                <tr><td>EZ loss area</td><td class="risk-val">+1.008</td><td>0.283</td><td class="risk-val">p &lt; 0.001</td><td class="risk-val">+3.072</td><td class="risk-val">p = 0.001</td></tr>
+                <tr><td>DDAF area</td><td class="risk-val">+0.779</td><td>0.299</td><td class="risk-val">p = 0.009</td><td class="risk-val">+2.376</td><td class="risk-val">p = 0.024</td></tr>
+                <tr><td>TDAF area</td><td class="risk-val">+0.868</td><td>0.242</td><td class="risk-val">p &lt; 0.001</td><td class="risk-val">+2.666</td><td class="risk-val">p = 0.001</td></tr>
               </tbody>
             </table>
             <div class="table-note">All three baseline outcomes scaled monotonically with genotype severity, with G4 showing markedly larger lesion areas than G1.</div>
           </div>
+
+          <div class="fig-grid">
+            <figure><img src="Images\Figure_1A.png" alt="Fig 1a. Baseline EZ loss area by genotype group"><figcaption>Fig 1a. Baseline EZ loss area by genotype group</figcaption></figure>
+            <figure><img src="Images\Figure_1B.png" alt="Fig 1b. Baseline DDAF area by genotype group"><figcaption>Fig 1b. Baseline DDAF area by genotype group</figcaption></figure>
+            <figure><img src="Images\Figure_1C.png" alt="Fig 1c. Baseline TDAF area by genotype group"><figcaption>Fig 1c. Baseline TDAF area by genotype group</figcaption></figure>
+          </div>
         </div>
 
+        <!-- ── 4. OVERALL PROGRESSION ── -->
         <div class="section" id="progression">
-          <div class="section-title"><span class="dot"></span>Overall Progression Rates (G1–G3)</div>
+          <div class="section-title"><span class="dot"></span>4. Overall Progression Rates (G1–G3)</div>
           <p style="font-size:0.83rem; color:var(--muted); margin-bottom:0.9rem;">n=42 eyes, 86 observations. ICC values near 1.0 indicate near-perfect within-patient correlation, validating the random-intercept model structure.</p>
           <div class="table-wrap">
             <table>
@@ -854,7 +804,14 @@
             </table>
           </div>
 
-          <div class="card" style="margin-top:0.9rem;">
+          <div class="fig-grid">
+            <figure><img src="Images\Figure_2A.png" alt="Fig 2a. Individual eye trajectories — EZ loss area"><figcaption>Fig 2a. Individual eye trajectories — EZ loss area</figcaption></figure>
+            <figure><img src="Images\Figure_2B.png" alt="Fig 2b. Individual eye trajectories — DDAF area"><figcaption>Fig 2b. Individual eye trajectories — DDAF area</figcaption></figure>
+            <figure><img src="Images\Figure_2C.png" alt="Fig 2c. Individual eye trajectories — TDAF area"><figcaption>Fig 2c. Individual eye trajectories — TDAF area</figcaption></figure>
+          </div>
+
+          <!-- ── 5. PROGRESSION BY GENOTYPE ── -->
+          <div class="card" style="margin-top:1.5rem;">
             <div class="card-title">Progression by Genotype Group (G1–G3)</div>
             <div class="table-wrap" style="margin-bottom:0; border:none; border-radius:0;">
               <table>
@@ -873,12 +830,40 @@
                 </tbody>
               </table>
             </div>
-            <div class="table-note">G3 progressed ~3.5× faster than G1 for EZ loss and nearly 6× faster for TDAF. Only DDAF in G1 failed to reach significance, consistent with G1's milder phenotype. G4 not estimable due to informative baseline censoring (75% of G4 eyes had &gt;95% EZ loss at baseline).</div>
+            <div class="table-note">G3 progressed ~3.5× faster than G1 for EZ loss and nearly 6× faster for TDAF. Only DDAF in G1 failed to reach significance, consistent with G1's milder phenotype. G4 not estimable due to informative baseline censoring.</div>
           </div>
+
+          <div class="card">
+            <div class="card-title">Pairwise Slope Contrasts (FDR-BH adjusted)</div>
+            <div class="table-wrap" style="margin-bottom:0; border:none; border-radius:0;">
+              <table>
+                <thead>
+                  <tr><th>Outcome</th><th>Contrast</th><th>Estimate (√mm²/yr)</th><th>95% CI</th><th>p-value</th><th>q (FDR)</th><th>Sig.</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>EZ loss</td><td>G2 vs G1</td><td class="risk-val">0.117</td><td>0.053 – 0.180</td><td class="risk-val">p &lt; 0.001</td><td class="risk-val">q &lt; 0.001</td><td class="risk-val">Yes</td></tr>
+                  <tr><td>EZ loss</td><td>G3 vs G1</td><td class="risk-val">0.181</td><td>0.106 – 0.257</td><td class="risk-val">p &lt; 0.001</td><td class="risk-val">q &lt; 0.001</td><td class="risk-val">Yes</td></tr>
+                  <tr><td>EZ loss</td><td>G3 vs G2</td><td>0.065</td><td>−0.006 – 0.135</td><td class="ns">p = 0.072</td><td class="ns">q = 0.072</td><td class="ns">No</td></tr>
+                  <tr><td>DDAF</td><td>G2 vs G1</td><td>0.095</td><td>0.004 – 0.186</td><td class="ns">p = 0.041</td><td class="ns">q = 0.061</td><td class="ns">No</td></tr>
+                  <tr><td>DDAF</td><td>G3 vs G1</td><td class="risk-val">0.136</td><td>0.025 – 0.247</td><td class="risk-val">p = 0.016</td><td class="risk-val">q = 0.049</td><td class="risk-val">Yes</td></tr>
+                  <tr><td>DDAF</td><td>G3 vs G2</td><td>0.041</td><td>−0.070 – 0.152</td><td class="ns">p = 0.467</td><td class="ns">q = 0.467</td><td class="ns">No</td></tr>
+                  <tr><td>TDAF</td><td>G2 vs G1</td><td>0.057</td><td>−0.012 – 0.126</td><td class="ns">p = 0.103</td><td class="ns">q = 0.103</td><td class="ns">No</td></tr>
+                  <tr><td>TDAF</td><td>G3 vs G1</td><td class="risk-val">0.270</td><td>0.186 – 0.353</td><td class="risk-val">p &lt; 0.001</td><td class="risk-val">q &lt; 0.001</td><td class="risk-val">Yes</td></tr>
+                  <tr><td>TDAF</td><td>G3 vs G2</td><td class="risk-val">0.212</td><td>0.129 – 0.296</td><td class="risk-val">p &lt; 0.001</td><td class="risk-val">q &lt; 0.001</td><td class="risk-val">Yes</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <figure class="wide">
+            <img src="Images\Figure_3.png" alt="Fig 3. Progression rates by genotype group">
+            <figcaption>Fig 3. Progression rates (√mm²/year) for EZ loss, DDAF, and TDAF — overall and by genotype group (G1–G3). G4 not estimable due to informative baseline censoring (75% of G4 eyes had &gt;95% EZ loss at baseline).</figcaption>
+          </figure>
         </div>
 
-        <div class="section">
-          <div class="section-title"><span class="dot"></span>Cross-Measure Progression Correlations</div>
+        <!-- ── 6. CROSS-MEASURE CORRELATIONS ── -->
+        <div class="section" id="cross-measure">
+          <div class="section-title"><span class="dot"></span>6. Cross-Measure Progression Correlations</div>
           <p style="font-size:0.83rem; color:var(--muted); margin-bottom:0.9rem;">Spearman correlations of per-eye progression rates (n=30 eyes with both EZ loss and FAF follow-up).</p>
           <div class="table-wrap">
             <table>
@@ -893,72 +878,99 @@
             </table>
             <div class="table-note">EZ loss correlates moderately with FAF measures; DDAF and TDAF correlate strongly with each other — consistent with shared atrophic substrate.</div>
           </div>
+
+          <div class="fig-grid">
+            <figure><img src="Images\Figure_4A.png" alt="Fig 4a. EZ loss rate vs DDAF rate"><figcaption>Fig 4a. EZ loss rate vs DDAF rate (ρ=0.40, p=0.028)</figcaption></figure>
+            <figure><img src="Images\Figure_4B.png" alt="Fig 4b. EZ loss rate vs TDAF rate"><figcaption>Fig 4b. EZ loss rate vs TDAF rate (ρ=0.40, p=0.028)</figcaption></figure>
+            <figure><img src="Images\Figure_4C.png" alt="Fig 4c. DDAF rate vs TDAF rate"><figcaption>Fig 4c. DDAF rate vs TDAF rate (ρ=0.67, p&lt;0.001)</figcaption></figure>
+          </div>
         </div>
 
+        <!-- ── 7. BCVA CORRELATIONS ── -->
         <div class="section" id="bcva">
-          <div class="section-title"><span class="dot"></span>BCVA Correlations</div>
+          <div class="section-title"><span class="dot"></span>7. BCVA Correlations</div>
+
           <div class="card">
-            <div class="card-title">Baseline: BCVA vs √(imaging metric)</div>
+            <div class="card-title">7.1 Baseline: BCVA vs √(imaging metric)</div>
             <div class="table-wrap" style="margin-bottom:0; border:none; border-radius:0;">
               <table>
                 <thead>
                   <tr>
                     <th>Metric</th>
-                    <th>n eyes</th>
+                    <th>n eyes (pts)</th>
                     <th>Spearman ρ</th>
+                    <th>95% CI</th>
                     <th>LMM slope (letters/√mm²)</th>
+                    <th>LMM 95% CI</th>
                     <th>LMM p</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td>EZ loss</td><td>54</td><td class="protect">−0.564</td><td class="risk-val">−6.796</td><td class="risk-val">p &lt; 0.001</td></tr>
-                  <tr><td>DDAF</td><td>42</td><td class="protect">−0.532</td><td class="risk-val">−5.950</td><td class="risk-val">p = 0.005</td></tr>
-                  <tr><td>TDAF</td><td>42</td><td class="protect">−0.527</td><td class="risk-val">−6.621</td><td class="risk-val">p = 0.006</td></tr>
+                  <tr><td>EZ loss</td><td>54 (27)</td><td class="protect">−0.564</td><td>−0.797 to −0.220</td><td class="risk-val">−6.796</td><td>−10.378 to −3.214</td><td class="risk-val">p &lt; 0.001</td></tr>
+                  <tr><td>DDAF</td><td>42 (21)</td><td class="protect">−0.532</td><td>−0.785 to −0.123</td><td class="risk-val">−5.950</td><td>−10.066 to −1.834</td><td class="risk-val">p = 0.005</td></tr>
+                  <tr><td>TDAF</td><td>42 (21)</td><td class="protect">−0.527</td><td>−0.758 to −0.122</td><td class="risk-val">−6.621</td><td>−11.389 to −1.853</td><td class="risk-val">p = 0.006</td></tr>
                 </tbody>
               </table>
             </div>
           </div>
 
+          <div class="fig-grid">
+            <figure><img src="Images\Figure_5A.png" alt="Fig 5a. Baseline BCVA vs √EZ loss area"><figcaption>Fig 5a. Baseline BCVA vs √EZ loss area (ρ=−0.56, p&lt;0.001)</figcaption></figure>
+            <figure><img src="Images\Figure_5B.png" alt="Fig 5b. Baseline BCVA vs √DDAF area"><figcaption>Fig 5b. Baseline BCVA vs √DDAF area (ρ=−0.53, p&lt;0.001)</figcaption></figure>
+            <figure><img src="Images\Figure_5C.png" alt="Fig 5c. Baseline BCVA vs √TDAF area"><figcaption>Fig 5c. Baseline BCVA vs √TDAF area (ρ=−0.53, p&lt;0.001)</figcaption></figure>
+          </div>
+
           <div class="card">
-            <div class="card-title">Change: ΔBCVA vs Δ√(imaging metric)</div>
+            <div class="card-title">7.2 Change: ∆BCVA vs ∆√(imaging metric)</div>
             <div class="table-wrap" style="margin-bottom:0; border:none; border-radius:0;">
               <table>
                 <thead>
                   <tr>
                     <th>Metric</th>
-                    <th>n eyes</th>
+                    <th>n eyes (pts)</th>
                     <th>Spearman ρ</th>
+                    <th>95% CI</th>
                     <th>LMM slope (letters/√mm²)</th>
+                    <th>LMM 95% CI</th>
                     <th>LMM p</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td>EZ loss</td><td>42</td><td class="ns">−0.179</td><td class="risk-val">−14.607</td><td class="risk-val">p = 0.046</td></tr>
-                  <tr><td>DDAF</td><td>32</td><td class="ns">−0.331</td><td class="ns">−6.324</td><td class="ns">p = 0.435</td></tr>
-                  <tr><td>TDAF</td><td>32</td><td class="ns">−0.309</td><td class="risk-val">−22.023</td><td class="risk-val">p &lt; 0.001</td></tr>
+                  <tr><td>EZ loss</td><td>42 (21)</td><td class="ns">−0.179</td><td>−0.584 to 0.294</td><td class="risk-val">−14.607</td><td>−28.983 to −0.231</td><td class="risk-val">p = 0.046</td></tr>
+                  <tr><td>DDAF</td><td>32 (16)</td><td class="ns">−0.331</td><td>−0.659 to 0.055</td><td class="ns">−6.324</td><td>−22.183 to 9.536</td><td class="ns">p = 0.435</td></tr>
+                  <tr><td>TDAF</td><td>32 (16)</td><td class="ns">−0.309</td><td>−0.671 to 0.151</td><td class="risk-val">−22.023</td><td>−33.509 to −10.537</td><td class="risk-val">p &lt; 0.001</td></tr>
                 </tbody>
               </table>
             </div>
             <div class="table-note">Larger lesion areas at baseline correspond to lower BCVA across all three measures. Change in TDAF and EZ loss tracked with BCVA decline in mixed-effects models, while DDAF change did not reach significance.</div>
           </div>
+
+          <div class="fig-grid">
+            <figure><img src="Images\Figure_6A.png" alt="Fig 6a. ∆BCVA vs ∆√EZ loss area"><figcaption>Fig 6a. ∆BCVA vs ∆√EZ loss area (LMM p=0.046)</figcaption></figure>
+            <figure><img src="Images\Figure_6B.png" alt="Fig 6b. ∆BCVA vs ∆DDAF area"><figcaption>Fig 6b. ∆BCVA vs ∆DDAF area (LMM p=0.435)</figcaption></figure>
+            <figure><img src="Images\Figure_6C.png" alt="Fig 6c. ∆BCVA vs ∆TDAF area"><figcaption>Fig 6c. ∆BCVA vs ∆TDAF area (LMM p&lt;0.001)</figcaption></figure>
+          </div>
         </div>
 
+        <!-- ── 8. PREDICTORS ── -->
         <div class="section" id="predictors">
-          <div class="section-title"><span class="dot"></span>Baseline Predictors of Progression</div>
-          <p style="font-size:0.83rem; color:var(--muted); margin-bottom:0.9rem;">Time × predictor interaction coefficients (change in annual √mm²/yr per 1-unit predictor increase). FDR-BH correction applied within each outcome. Restricted to G1–G3.</p>
+          <div class="section-title"><span class="dot"></span>8. Baseline Predictors of Progression (G1–G3)</div>
+          <p style="font-size:0.83rem; color:var(--muted); margin-bottom:0.9rem;">Time × predictor interaction coefficients (change in annual √mm²/yr per 1-unit predictor increase). FDR-BH correction applied within each outcome. Restricted to G1–G3 (n=46 eyes / 86 observations for EZ loss; n=36 eyes for DDAF/TDAF).</p>
 
           <div class="card">
             <div class="card-title">Outcome: EZ Loss Area</div>
             <div class="table-wrap" style="margin-bottom:0; border:none; border-radius:0;">
               <table>
-                <thead><tr><th>Predictor</th><th>Estimate</th><th>p-value</th><th>q (FDR)</th><th>Sig.</th></tr></thead>
+                <thead><tr><th>Predictor</th><th>Estimate</th><th>SE</th><th>95% CI</th><th>p-value</th><th>q (FDR)</th><th>Sig.</th></tr></thead>
                 <tbody>
-                  <tr><td>Genotype (per severity step)</td><td class="risk-val">+0.093</td><td class="risk-val">p &lt; 0.001</td><td class="risk-val">q &lt; 0.001</td><td class="risk-val">Yes</td></tr>
-                  <tr><td>Disease duration (per yr)</td><td>−0.003</td><td>p = 0.026</td><td class="ns">q = 0.119</td><td class="ns">No</td></tr>
-                  <tr><td>Baseline age (per yr)</td><td>−0.001</td><td>p = 0.196</td><td class="ns">q = 0.353</td><td class="ns">No</td></tr>
-                  <tr><td>√Baseline EZ loss</td><td>+0.019</td><td>p = 0.104</td><td class="ns">q = 0.312</td><td class="ns">No</td></tr>
-                  <tr><td>Fishman stage</td><td>+0.001</td><td>p = 0.952</td><td class="ns">q = 1.000</td><td class="ns">No</td></tr>
-                  <tr><td>Multifocal</td><td>+0.011</td><td>p = 0.777</td><td class="ns">q = 1.000</td><td class="ns">No</td></tr>
+                  <tr><td>Baseline age (per yr)</td><td>−0.001</td><td>0.001</td><td>−0.003 to 0.001</td><td class="ns">p = 0.196</td><td class="ns">q = 0.353</td><td class="ns">No</td></tr>
+                  <tr><td>Disease duration (per yr)</td><td>−0.003</td><td>0.001</td><td>−0.006 to &lt;0.001</td><td class="ns">p = 0.026</td><td class="ns">q = 0.119</td><td class="ns">No</td></tr>
+                  <tr><td>Genotype (per severity step)</td><td class="risk-val">+0.093</td><td>0.019</td><td>0.055 to 0.130</td><td class="risk-val">p &lt; 0.001</td><td class="risk-val">q &lt; 0.001</td><td class="risk-val">Yes</td></tr>
+                  <tr><td>Fishman stage</td><td>+0.001</td><td>0.021</td><td>−0.040 to 0.042</td><td class="ns">p = 0.952</td><td class="ns">q = 1.000</td><td class="ns">No</td></tr>
+                  <tr><td>Multifocal</td><td>+0.011</td><td>0.038</td><td>−0.063 to 0.084</td><td class="ns">p = 0.777</td><td class="ns">q = 1.000</td><td class="ns">No</td></tr>
+                  <tr><td>√Baseline EZ loss</td><td>+0.019</td><td>0.012</td><td>−0.004 to 0.041</td><td class="ns">p = 0.104</td><td class="ns">q = 0.312</td><td class="ns">No</td></tr>
+                  <tr><td>√Baseline DDAF</td><td>−0.003</td><td>0.017</td><td>−0.037 to 0.031</td><td class="ns">p = 0.866</td><td class="ns">q = 1.000</td><td class="ns">No</td></tr>
+                  <tr><td>√Baseline TDAF</td><td>+0.023</td><td>0.017</td><td>−0.011 to 0.056</td><td class="ns">p = 0.183</td><td class="ns">q = 0.353</td><td class="ns">No</td></tr>
                 </tbody>
               </table>
             </div>
@@ -968,12 +980,16 @@
             <div class="card-title">Outcome: DDAF Area</div>
             <div class="table-wrap" style="margin-bottom:0; border:none; border-radius:0;">
               <table>
-                <thead><tr><th>Predictor</th><th>Estimate</th><th>p-value</th><th>q (FDR)</th><th>Sig.</th></tr></thead>
+                <thead><tr><th>Predictor</th><th>Estimate</th><th>SE</th><th>95% CI</th><th>p-value</th><th>q (FDR)</th><th>Sig.</th></tr></thead>
                 <tbody>
-                  <tr><td>Genotype (per severity step)</td><td class="risk-val">+0.072</td><td class="risk-val">p = 0.009</td><td class="risk-val">q = 0.041</td><td class="risk-val">Yes</td></tr>
-                  <tr><td>√Baseline DDAF</td><td class="risk-val">+0.032</td><td class="risk-val">p = 0.009</td><td class="risk-val">q = 0.041</td><td class="risk-val">Yes</td></tr>
-                  <tr><td>√Baseline EZ loss</td><td>+0.038</td><td>p = 0.039</td><td class="ns">q = 0.100</td><td class="ns">No</td></tr>
-                  <tr><td>Fishman stage</td><td>+0.053</td><td>p = 0.061</td><td class="ns">q = 0.109</td><td class="ns">No</td></tr>
+                  <tr><td>Baseline age (per yr)</td><td>+0.001</td><td>0.001</td><td>−0.001 to 0.004</td><td class="ns">p = 0.326</td><td class="ns">q = 0.420</td><td class="ns">No</td></tr>
+                  <tr><td>Disease duration (per yr)</td><td>+0.000</td><td>0.002</td><td>−0.004 to 0.005</td><td class="ns">p = 0.841</td><td class="ns">q = 0.946</td><td class="ns">No</td></tr>
+                  <tr><td>Genotype (per severity step)</td><td class="risk-val">+0.072</td><td>0.028</td><td>0.018 to 0.126</td><td class="risk-val">p = 0.009</td><td class="risk-val">q = 0.041</td><td class="risk-val">Yes</td></tr>
+                  <tr><td>Fishman stage</td><td>+0.053</td><td>0.029</td><td>−0.002 to 0.109</td><td class="ns">p = 0.061</td><td class="ns">q = 0.109</td><td class="ns">No</td></tr>
+                  <tr><td>Multifocal</td><td>+0.062</td><td>0.050</td><td>−0.036 to 0.160</td><td class="ns">p = 0.215</td><td class="ns">q = 0.322</td><td class="ns">No</td></tr>
+                  <tr><td>√Baseline DDAF</td><td class="risk-val">+0.032</td><td>0.012</td><td>0.008 to 0.056</td><td class="risk-val">p = 0.009</td><td class="risk-val">q = 0.041</td><td class="risk-val">Yes</td></tr>
+                  <tr><td>√Baseline EZ loss</td><td>+0.038</td><td>0.018</td><td>0.002 to 0.074</td><td class="ns">p = 0.039</td><td class="ns">q = 0.100</td><td class="ns">No</td></tr>
+                  <tr><td>√Baseline TDAF</td><td>+0.036</td><td>0.018</td><td>0.001 to 0.071</td><td class="ns">p = 0.044</td><td class="ns">q = 0.100</td><td class="ns">No</td></tr>
                 </tbody>
               </table>
             </div>
@@ -983,21 +999,26 @@
             <div class="card-title">Outcome: TDAF Area</div>
             <div class="table-wrap" style="margin-bottom:0; border:none; border-radius:0;">
               <table>
-                <thead><tr><th>Predictor</th><th>Estimate</th><th>p-value</th><th>q (FDR)</th><th>Sig.</th></tr></thead>
+                <thead><tr><th>Predictor</th><th>Estimate</th><th>SE</th><th>95% CI</th><th>p-value</th><th>q (FDR)</th><th>Sig.</th></tr></thead>
                 <tbody>
-                  <tr><td>Genotype (per severity step)</td><td class="risk-val">+0.124</td><td class="risk-val">p &lt; 0.001</td><td class="risk-val">q &lt; 0.001</td><td class="risk-val">Yes</td></tr>
-                  <tr><td>√Baseline EZ loss</td><td class="risk-val">+0.068</td><td class="risk-val">p &lt; 0.001</td><td class="risk-val">q = 0.001</td><td class="risk-val">Yes</td></tr>
-                  <tr><td>Disease duration (per yr)</td><td>−0.004</td><td>p = 0.073</td><td class="ns">q = 0.176</td><td class="ns">No</td></tr>
-                  <tr><td>√Baseline TDAF</td><td>+0.029</td><td>p = 0.078</td><td class="ns">q = 0.176</td><td class="ns">No</td></tr>
+                  <tr><td>Baseline age (per yr)</td><td>−0.002</td><td>0.001</td><td>−0.004 to 0.000</td><td class="ns">p = 0.098</td><td class="ns">q = 0.176</td><td class="ns">No</td></tr>
+                  <tr><td>Disease duration (per yr)</td><td>−0.004</td><td>0.002</td><td>−0.008 to 0.000</td><td class="ns">p = 0.073</td><td class="ns">q = 0.176</td><td class="ns">No</td></tr>
+                  <tr><td>Genotype (per severity step)</td><td class="risk-val">+0.124</td><td>0.022</td><td>0.081 to 0.167</td><td class="risk-val">p &lt; 0.001</td><td class="risk-val">q &lt; 0.001</td><td class="risk-val">Yes</td></tr>
+                  <tr><td>Fishman stage</td><td>+0.024</td><td>0.029</td><td>−0.031 to 0.080</td><td class="ns">p = 0.391</td><td class="ns">q = 0.586</td><td class="ns">No</td></tr>
+                  <tr><td>Multifocal</td><td>−0.011</td><td>0.049</td><td>−0.107 to 0.086</td><td class="ns">p = 0.828</td><td class="ns">q = 1.000</td><td class="ns">No</td></tr>
+                  <tr><td>√Baseline TDAF</td><td>+0.029</td><td>0.017</td><td>−0.003 to 0.062</td><td class="ns">p = 0.078</td><td class="ns">q = 0.176</td><td class="ns">No</td></tr>
+                  <tr><td>√Baseline EZ loss</td><td class="risk-val">+0.068</td><td>0.019</td><td>0.032 to 0.105</td><td class="risk-val">p &lt; 0.001</td><td class="risk-val">q = 0.001</td><td class="risk-val">Yes</td></tr>
+                  <tr><td>√Baseline DDAF</td><td>−0.003</td><td>0.022</td><td>−0.045 to 0.040</td><td class="ns">p = 0.909</td><td class="ns">q = 1.000</td><td class="ns">No</td></tr>
                 </tbody>
               </table>
             </div>
-            <div class="table-note">Genotype was the strongest and most consistent predictor across all three outcomes after FDR correction. Baseline √EZ loss additionally predicted TDAF progression — supporting EZ loss as an early indicator of subsequent atrophic enlargement.</div>
+            <div class="table-note">Genotype was the strongest and most consistent predictor across all three outcomes after FDR correction. Baseline √EZ loss additionally predicted TDAF progression — supporting EZ loss as an early indicator of subsequent atrophic enlargement. FDR = false discovery rate (Benjamini-Hochberg). The base_flecks_bin model failed to converge and is excluded from all predictor tables.</div>
           </div>
         </div>
 
-        <div class="section">
-          <div class="section-title"><span class="dot"></span>Discussion</div>
+        <!-- ── 9. DISCUSSION ── -->
+        <div class="section" id="discussion">
+          <div class="section-title"><span class="dot"></span>9. Discussion</div>
           <div class="mech-grid">
             <div class="mech-card"><div class="mech-icon">🔬</div><div class="mech-title">Genotype Drives Progression</div><div class="mech-desc">Genotype severity was the strongest and most consistent predictor across all three outcomes after FDR correction — supporting molecular classification as a key prognostic axis.</div></div>
             <div class="mech-card"><div class="mech-icon">📊</div><div class="mech-title">EZ Loss as Early Marker</div><div class="mech-desc">Baseline √EZ loss predicted future TDAF progression, suggesting EZ disruption precedes and forecasts subsequent atrophic enlargement on FAF.</div></div>
@@ -1006,8 +1027,9 @@
           </div>
         </div>
 
+        <!-- ── 10. LIMITATIONS ── -->
         <div class="section" id="limitations">
-          <div class="section-title"><span class="dot"></span>Limitations</div>
+          <div class="section-title"><span class="dot"></span>10. Limitations</div>
           <div class="card">
             <ul class="lim-list">
               <li>Informative baseline censoring excluded 75% of G4 eyes from progression analyses. Remaining G4 follow-up data derive from a single patient whose eyes — by virtue of not being censored — represent the least severely affected within G4, biasing any progression estimate low.</li>
@@ -1031,20 +1053,16 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- PAGE 3: CINDY CHEN — AS-OCT Dilation Study (FULL CONTENT)     -->
+    <!-- PAGE 3: CINDY [PLACEHOLDER]                                   -->
     <!-- ============================================================ -->
     <div class="page" id="page-cindy">
       <div class="hero">
-        <div class="hero-label">ARVO 2026 · Poster #4002–0216</div>
-        <h1>Impact of Pharmacologic Dilation on Volumetric Anterior Segment Optical Coherence Tomography Quantification of Anterior Chamber Cell Density in Uveitis Patients</h1>
-        <div class="hero-question">
-          What is the effect of pharmacologic dilation on clinical and volumetric AS-OCT quantification of anterior chamber inflammation in uveitis?
-        </div>
-        <div class="hero-answer">
-          <strong>Central finding:</strong> Pharmacologic dilation does not significantly alter anterior chamber cell density or clinical SUN grade. However, dilation-induced pigment dispersion can affect AS-OCT hyperreflective particle quantification, particularly in eyes with greater pigment release.
-        </div>
+        <div class="hero-label">[PLACEHOLDER · Venue / Year]</div>
+        <h1>[PLACEHOLDER — Project or Paper Title]</h1>
+        <div class="hero-question">[PLACEHOLDER — central research question.]</div>
+        <div class="hero-answer"><strong>Central finding:</strong> [PLACEHOLDER — headline result.]</div>
         <div class="authors">
-          <span>Cindy Chen, BA · Eliot N. Haddad, BS · Yuka Mizuno, MD · Victor Bellanda, MD · David Shin, BS · Madina Mahmoud, BS · Allison Winter, BS · Bolisa Savic, RN, BSN · Suraj Bala, BS · Matthew J. Schulgit, BS · Nitesh Mohan, BS · Duriye Sevgi, MD · Kimberly Baynes, MSN, RN · Ashley Lowe, BSN, RN · Sunil K. Srivastava, MD · Sumit Sharma, MD</span>
+          <span>Cindy [Last Name], [Degree] · [Co-author 1] · [Co-author 2] · [Senior Author]</span>
           <span style="margin-top:0.3rem; color: rgba(214,234,244,0.55);">Cole Eye Institute, Cleveland Clinic · Case Western Reserve University</span>
           <span style="margin-top:0.2rem; color: rgba(214,234,244,0.55);">Contact: <a href="mailto:placeholder@ccf.org" style="color:var(--orange);">placeholder@ccf.org</a></span>
         </div>
@@ -1052,172 +1070,72 @@
 
       <nav class="page-nav">
         <a href="#methods">Methods</a>
-        <a href="#demographics">Demographics</a>
         <a href="#results">Results</a>
-        <a href="#outlier">Outlier Case</a>
         <a href="#mechanisms">Discussion</a>
         <a href="#limitations">Limitations</a>
       </nav>
 
       <div class="stats">
-        <div class="stat"><div class="stat-val big">65</div><div class="stat-label">Eyes studied</div></div>
-        <div class="stat"><div class="stat-val big">39</div><div class="stat-label">Patients enrolled</div></div>
-        <div class="stat"><div class="stat-val">+4.5</div><div class="stat-label">Mean Δ cells/mm³ (n.s.)</div></div>
-        <div class="stat"><div class="stat-val">95%</div><div class="stat-label">SUN grade unchanged</div></div>
+        <div class="stat"><div class="stat-val big">[N]</div><div class="stat-label">[Metric]</div></div>
+        <div class="stat"><div class="stat-val big">[N]</div><div class="stat-label">[Metric]</div></div>
+        <div class="stat"><div class="stat-val">[%]</div><div class="stat-label">[Metric]</div></div>
+        <div class="stat"><div class="stat-val">[%]</div><div class="stat-label">[Metric]</div></div>
       </div>
 
       <div class="container">
-
-        <!-- METHODS -->
         <div class="section" id="methods">
           <div class="section-title"><span class="dot"></span>Methods</div>
           <div class="card">
             <div class="steps">
-              <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Study Design</strong><span>Prospective case series at a single uveitis referral center (Cole Eye Institute, Cleveland Clinic).</span></div></div>
-              <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Population</strong><span>Patients with uveitis involving the anterior segment. N = 65 eyes, 39 patients. Linear mixed-effects models used to account for bilateral eyes.</span></div></div>
-              <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Dilation Protocol</strong><span>Phenylephrine 2.5% and/or tropicamide 1% per physician preference. Pre- and post-dilation slit lamp exam with SUN grading for AC cells, pigment, and flare.</span></div></div>
-              <div class="step"><div class="step-num">4</div><div class="step-body"><strong>AS-OCT Imaging</strong><span>Paired volumetric cube scans (4×6 mm, 65 B-scans) using the ANTERION® swept-source device, acquired pre- and post-dilation.</span></div></div>
-              <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Quantification</strong><span>Semi-automated segmentation and threshold-based hyperreflective particle detection to generate anterior chamber cell density (cells/mm³).</span></div></div>
-              <div class="step"><div class="step-num">6</div><div class="step-body"><strong>Statistical Analysis</strong><span>Linear mixed-effects models accounting for bilateral eyes. Bland-Altman analysis for pre- vs. post-dilation agreement (mean diff = +4.5 cells/mm³, 95% LoA: −90.1 to +99.0, p = 0.46).</span></div></div>
+              <div class="step"><div class="step-num">1</div><div class="step-body"><strong>[Step title]</strong><span>[Description.]</span></div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body"><strong>[Step title]</strong><span>[Description.]</span></div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body"><strong>[Step title]</strong><span>[Description.]</span></div></div>
+              <div class="step"><div class="step-num">4</div><div class="step-body"><strong>[Step title]</strong><span>[Description.]</span></div></div>
             </div>
           </div>
         </div>
 
-        <!-- DEMOGRAPHICS -->
-        <div class="section" id="demographics">
-          <div class="section-title"><span class="dot"></span>Table 1. Baseline Characteristics</div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th style="width:58%">Characteristic</th><th>Overall (N = 65 eyes, 39 patients)</th></tr></thead>
-              <tbody>
-                <tr class="group-row"><td colspan="2">Sex, n (%)</td></tr>
-                <tr><td class="sub">Male</td><td>47 (72.3%)</td></tr>
-                <tr><td class="sub">Female</td><td>18 (27.7%)</td></tr>
-                <tr class="group-row"><td colspan="2">Lens status, n (%)</td></tr>
-                <tr><td class="sub">Phakic</td><td>34 (52.3%)</td></tr>
-                <tr><td class="sub">Pseudophakic</td><td>31 (47.7%)</td></tr>
-                <tr class="group-row"><td colspan="2">Eye, n (%)</td></tr>
-                <tr><td class="sub">OD</td><td>37 (56.9%)</td></tr>
-                <tr><td class="sub">OS</td><td>28 (43.1%)</td></tr>
-                <tr class="group-row"><td colspan="2">Race/ethnicity, n (%)</td></tr>
-                <tr><td class="sub">White</td><td>36 (55.4%)</td></tr>
-                <tr><td class="sub">Black</td><td>22 (33.8%)</td></tr>
-                <tr><td class="sub">Hispanic</td><td>2 (3.1%)</td></tr>
-                <tr><td class="sub">Asian</td><td>2 (3.1%)</td></tr>
-                <tr><td class="sub">Other</td><td>3 (4.6%)</td></tr>
-                <tr class="group-row"><td colspan="2">Anatomic classification, n (%)</td></tr>
-                <tr><td class="sub">Anterior</td><td>32 (49.2%)</td></tr>
-                <tr><td class="sub">Posterior</td><td>2 (3.1%)</td></tr>
-                <tr><td class="sub">Panuveitis</td><td>28 (43.1%)</td></tr>
-                <tr><td class="sub">Scleritis</td><td>3 (4.6%)</td></tr>
-                <tr class="group-row"><td colspan="2">Iris color, n (%)</td></tr>
-                <tr><td class="sub">Brown</td><td>40 (61.5%)</td></tr>
-                <tr><td class="sub">Green</td><td>11 (16.9%)</td></tr>
-                <tr><td class="sub">Blue</td><td>14 (21.5%)</td></tr>
-              </tbody>
-            </table>
-            <div class="table-note">Baseline demographic and clinical characteristics of the study cohort.</div>
-          </div>
-        </div>
-
-        <!-- RESULTS WITH FIGURES -->
         <div class="section" id="results">
           <div class="section-title"><span class="dot"></span>Results</div>
-
-          <div class="figure-grid">
-            <!-- Figure 1 -->
-            <div class="figure-card">
-              <div class="figure-title">Fig. 1 — Pre-dilation Clinical Grade Distribution (SUN)</div>
-              <img src="" alt="Figure 1: Pre-dilation Clinical Grade Distribution (SUN)">
-              <div class="figure-caption">Distribution of pre-dilation SUN clinical cell grades across the 65 study eyes.</div>
-            </div>
-
-            <!-- Figure 2 -->
-            <div class="figure-card">
-              <div class="figure-title">Fig. 2 — Pigment Grade Distribution: Pre- vs. Post-Dilation</div>
-              <img src="" alt="Figure 2: Pigment Grade Distribution Pre- vs. Post-Dilation">
-              <div class="figure-caption">Comparison of pigment grade distribution before and after pharmacologic dilation.</div>
-            </div>
-
-            <!-- Figure 3 -->
-            <div class="figure-card">
-              <div class="figure-title">Fig. 3 — Distribution of Change in Clinical Grade (Post − Pre)</div>
-              <img src="" alt="Figure 3: Distribution of Change in Clinical Grade">
-              <div class="figure-caption">95% of eyes had no change in SUN clinical grade following dilation.</div>
-            </div>
-
-            <!-- Figure 4 -->
-            <div class="figure-card">
-              <div class="figure-title">Fig. 4 — Density Fluctuation by Pigment Change Group</div>
-              <img src="" alt="Figure 4: Density Fluctuation by Pigment Change Group">
-              <div class="figure-caption">Mean |ΔAC Cell Density| (cells/mm³) — eyes with large pigment change showed ~14× greater fluctuation.</div>
-            </div>
-          </div>
-
-          <!-- Bland-Altman full-width figure -->
-          <div class="figure-full">
-            <div class="card-title" style="margin-bottom:0.6rem;">Fig. 5 — Pre- vs. Post-Dilation Anterior Chamber Hyperreflective Particle Density (Bland-Altman)</div>
-            <img src="" alt="Figure 5: Bland-Altman plot of pre- vs. post-dilation AC particle density">
-            <div class="table-note" style="padding-top:0.5rem;">Mean difference = +4.5 cells/mm³; 95% limits of agreement: −90.1 to +99.0 cells/mm³; p = 0.46 (not significant). One outlier driven by grade 4+ pigment dispersion post-dilation.</div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>[Outcome]</th><th>[Group 1]</th><th>[Group 2]</th><th>[Group 3]</th></tr></thead>
+              <tbody>
+                <tr><td>[Row]</td><td class="protect">[value]</td><td class="ns">[value]</td><td class="protect">[value]</td></tr>
+                <tr><td>[Row]</td><td class="protect">[value]</td><td class="ns">[value]</td><td class="protect">[value]</td></tr>
+              </tbody>
+            </table>
+            <div class="table-note">[Legend.]</div>
           </div>
         </div>
 
-        <!-- OUTLIER CASE -->
-        <div class="section" id="outlier">
-          <div class="section-title"><span class="dot"></span>Outlier Case</div>
-          <p style="font-size:0.83rem; color:var(--muted); margin-bottom:0.75rem;">The following case illustrates how grade 4+ pigment dispersion post-dilation dramatically elevated AS-OCT hyperreflective particle counts with no corresponding change in clinical SUN cell grade — demonstrating the key confound when using AS-OCT in dilated eyes with significant pigment release.</p>
-          <div class="outlier-grid">
-            <div class="outlier-card">
-              <div class="o-label">Pre-Dilation</div>
-              <div class="o-density pre">7.9<span style="font-size:0.9rem; font-family:'DM Sans',sans-serif; font-weight:400;"> cells/mm³</span></div>
-              <div style="margin-top:0.5rem;"><span class="o-tag">SUN cell grade: 0</span><span class="o-tag">Pigment grade: 0</span></div>
-            </div>
-            <div class="outlier-card">
-              <div class="o-label">Post-Dilation</div>
-              <div class="o-density post">379.7<span style="font-size:0.9rem; font-family:'DM Sans',sans-serif; font-weight:400;"> cells/mm³</span></div>
-              <div style="margin-top:0.5rem;"><span class="o-tag">SUN cell grade: 0</span><span class="o-tag warn">Pigment grade: 4+</span></div>
-            </div>
-          </div>
-          <div class="outlier-delta">
-            Δ = <strong>+371.8 cells/mm³</strong> — entire increase attributable to pigment dispersion; SUN cell grade unchanged at 0
-          </div>
-        </div>
-
-        <!-- DISCUSSION -->
         <div class="section" id="mechanisms">
           <div class="section-title"><span class="dot"></span>Discussion</div>
           <div class="mech-grid">
-            <div class="mech-card"><div class="mech-icon">🔬</div><div class="mech-title">Pigment Dispersion</div><div class="mech-desc">Pharmacologic dilation can liberate iris pigment into the anterior chamber. AS-OCT threshold-based detection cannot distinguish pigment granules from inflammatory cells, producing spurious density elevations — particularly in eyes with dense brown irides or posterior synechiae.</div></div>
-            <div class="mech-card"><div class="mech-icon">💧</div><div class="mech-title">Aqueous Volume Dilution</div><div class="mech-desc">Dilation transiently increases AC fluid volume. The same number of particles distributed across a larger AS-OCT scan volume registers as lower apparent density, likely explaining the density decreases observed in most eyes without significant pigment release.</div></div>
-            <div class="mech-card"><div class="mech-icon">⚖️</div><div class="mech-title">Clinical Grade Stability</div><div class="mech-desc">SUN grading was unchanged in 95% of eyes post-dilation, confirming that slit-lamp clinical assessment is robust to pharmacologic dilation. The two modalities capture overlapping but mechanistically distinct aspects of anterior chamber inflammation.</div></div>
-            <div class="mech-card"><div class="mech-icon">📊</div><div class="mech-title">Implications for Monitoring</div><div class="mech-desc">Pre-dilation AS-OCT imaging should be prioritized for serial monitoring — especially in patients with brown irides, a history of pigment dispersion, or elevated baseline pigment grade — to avoid overestimating inflammatory activity.</div></div>
+            <div class="mech-card"><div class="mech-icon">🔬</div><div class="mech-title">[Theme]</div><div class="mech-desc">[Placeholder.]</div></div>
+            <div class="mech-card"><div class="mech-icon">💧</div><div class="mech-title">[Theme]</div><div class="mech-desc">[Placeholder.]</div></div>
+            <div class="mech-card"><div class="mech-icon">⚖️</div><div class="mech-title">[Theme]</div><div class="mech-desc">[Placeholder.]</div></div>
+            <div class="mech-card"><div class="mech-icon">📊</div><div class="mech-title">[Theme]</div><div class="mech-desc">[Placeholder.]</div></div>
           </div>
         </div>
 
-        <!-- LIMITATIONS -->
         <div class="section" id="limitations">
           <div class="section-title"><span class="dot"></span>Limitations</div>
           <div class="card">
             <ul class="lim-list">
-              <li>AS-OCT quantification cannot distinguish inflammatory hyperreflective particles from pigment-derived particles — a fundamental limitation of all threshold-based detection algorithms.</li>
-              <li>Dilation may transiently increase AC fluid volume, diluting apparent particle density in the fixed AS-OCT scan volume; this confounds pre-to-post comparisons in both directions.</li>
-              <li>Single-center prospective case series; findings may not generalize to different dilation agents, imaging devices, or patient populations with varying disease activity.</li>
-              <li>Subgroup analyses of outlier eyes with high pigment release were limited by small sample size within this group (n = 9 with large pigment change ≥1.0 grade).</li>
+              <li>[Placeholder limitation 1.]</li>
+              <li>[Placeholder limitation 2.]</li>
+              <li>[Placeholder limitation 3.]</li>
             </ul>
           </div>
         </div>
-
-      </div><!-- /container -->
+      </div>
 
       <div class="contact">
         <strong>Contact &amp; Correspondence</strong>
-        Cindy Chen, BA — Cole Eye Institute, Cleveland Clinic<br>
+        Cindy [Last Name] — Cole Eye Institute, Cleveland Clinic<br>
         <a href="mailto:placeholder@ccf.org">placeholder@ccf.org</a>
-        <div style="margin-top:0.8rem; font-size:0.72rem; opacity:0.6;">
-          Funding: NIH-NEI P30 Core Grant · Research to Prevent Blindness, Inc. · Cleveland Eye Bank Foundation<br>
-          ARVO 2026 Annual Meeting · Poster #4002–0216<br><br>
-          Disclosures — CC, ENH, YM, VB, DS, MM, AW, BS, SB, MJS, NM, DS, KB, AL: None. SS: Consulting: 4DMT, Alimera, Abbvie, Apellis, Astellas, Bausch and Lomb, Clearside, Eyepoint, Harrow, Genentech/Roche, Kodiak, Merck, Regeneron, RegenXBio, Ripple, Volk, and Zeiss; Research support: Acelyrin, Gilead, Genentech/Roche, Santen, IONIS, Kodiak. SKS: Grants: Regeneron, Eyevensys, Eyepoint, and Gilead; Consulting: Adverum, Novartis, Zeiss, and Bausch and Lomb.
-        </div>
+        <div style="margin-top:0.8rem; font-size:0.72rem; opacity:0.6;">[PLACEHOLDER — Funding / Meeting]</div>
       </div>
     </div>
 
@@ -1463,7 +1381,7 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- PAGE 7: Eliot (FULL CONTENT from reference)                  -->
+    <!-- PAGE 7: Eliot                                                 -->
     <!-- ============================================================ -->
     <div class="page" id="page-Eliot">
       <div class="hero">
